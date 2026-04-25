@@ -9,38 +9,27 @@ body {
   overflow-x: hidden;
 }
 
-/* アニメーション用の外枠 */
+/* アニメーション用のコンテナ */
 .js-zoom-section {
   position: relative;
   width: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
+  overflow: hidden;
 }
 
-/* 画像を囲むコンテナ：比率を維持するため高さを固定しない */
 .zoom-container {
   width: 100%;
+  height: 80vh; /* 画像の表示高さ（お好みで調整してください） */
   overflow: hidden;
-  background: #000; /* 拡大中の背景を黒に */
 }
 
-/* 画像本体：width: 100% で比率を維持 */
 .js-zoom-image {
-  display: block;
   width: 100%;
-  height: auto; /* ここを auto にすることで比率崩れを防ぎます */
-  transform: scale(1.4); /* 初期拡大率 */
+  height: 100%;
+  object-fit: cover;
+  /* 初期状態：大きく表示 */
+  transform: scale(1.5);
   will-change: transform;
   filter: brightness(80%);
-}
-
-/* メインビジュアルのみ、最初は画面いっぱいに表示 */
-.hero .zoom-container {
-  height: 100vh;
-}
-.hero .js-zoom-image {
-  height: 100vh;
-  object-fit: cover;
 }
 
 .hero-text {
@@ -51,43 +40,21 @@ body {
   z-index: 10;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-}
+.hero h1 { font-size: 2.5rem; font-weight: 400; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; }
 
 .section {
   max-width: 900px;
-  margin: 150px auto;
+  margin: 100px auto;
   padding: 0 20px;
 }
 
-.section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 30px;
-  font-weight: 400;
-}
+.section h2 { font-size: 1.6rem; margin-bottom: 30px; font-weight: 400; }
+.js-title { opacity: 0; transform: translateY(30px); }
 
-.js-title {
-  opacity: 0;
-  transform: translateY(40px);
-}
+.section p { font-size: 1rem; color: #333; }
 
-.section p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.cta {
-  text-align: center;
-  margin-bottom: 150px;
-}
-
+.cta { text-align: center; margin-bottom: 150px; }
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -97,13 +64,9 @@ body {
   color: #111;
   transition: all 0.3s ease;
 }
-
-.btn:hover {
-  background: #111;
-  color: #fff;
-}
+.btn:hover { background: #111; color: #fff; }
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.8rem; }
-  .section { margin: 80px auto; }
+  .section { margin: 60px auto; }
 }
