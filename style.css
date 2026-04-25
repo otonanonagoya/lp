@@ -9,26 +9,38 @@ body {
   overflow-x: hidden;
 }
 
+/* アニメーション用の外枠 */
 .js-zoom-section {
   position: relative;
-  height: 100vh; /* アニメーション後はそのままスクロール */
+  width: 100%;
   margin: 0 !important;
   padding: 0 !important;
 }
 
+/* 画像を囲むコンテナ：比率を維持するため高さを固定しない */
 .zoom-container {
   width: 100%;
-  height: 100vh;
   overflow: hidden;
+  background: #000; /* 拡大中の背景を黒に */
 }
 
+/* 画像本体：width: 100% で比率を維持 */
 .js-zoom-image {
+  display: block;
   width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  transform: scale(1.5); /* 初期状態：1.5倍 */
+  height: auto; /* ここを auto にすることで比率崩れを防ぎます */
+  transform: scale(1.4); /* 初期拡大率 */
   will-change: transform;
   filter: brightness(80%);
+}
+
+/* メインビジュアルのみ、最初は画面いっぱいに表示 */
+.hero .zoom-container {
+  height: 100vh;
+}
+.hero .js-zoom-image {
+  height: 100vh;
+  object-fit: cover;
 }
 
 .hero-text {
