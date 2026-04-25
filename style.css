@@ -6,12 +6,13 @@ body {
   color: #111;
   background: #fff;
   line-height: 1.8;
+  overflow-x: hidden;
 }
 
 /* アニメーション用の外枠 */
 .js-zoom-section {
   position: relative;
-  height: 150vh; /* スクロールの長さ */
+  height: 180vh; /* スクロールする距離 */
   margin: 0 !important;
   padding: 0 !important;
   max-width: none !important;
@@ -26,14 +27,15 @@ body {
   overflow: hidden;
 }
 
-/* 画像の初期状態 */
+/* 画像本体：最初は1.5倍に拡大 */
 .js-zoom-image {
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  transform: scale(1.3);
+  transform: scale(1.5);
   will-change: transform;
   filter: brightness(80%);
+  transition: none !important; /* GSAPとの干渉防止 */
 }
 
 .hero-text {
@@ -56,7 +58,7 @@ body {
 
 .section {
   max-width: 900px;
-  margin: 120px auto;
+  margin: 150px auto;
   padding: 0 20px;
 }
 
@@ -75,10 +77,6 @@ body {
 .section p {
   font-size: 1rem;
   color: #333;
-}
-
-.image-section {
-  margin: 100px 0;
 }
 
 .cta {
