@@ -9,33 +9,26 @@ body {
   overflow-x: hidden;
 }
 
-/* アニメーション用の外枠 */
 .js-zoom-section {
   position: relative;
-  height: 180vh; /* スクロールする距離 */
+  height: 100vh; /* アニメーション後はそのままスクロール */
   margin: 0 !important;
   padding: 0 !important;
-  max-width: none !important;
 }
 
-/* 画像を画面に固定する枠 */
 .zoom-container {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
-/* 画像本体：最初は1.5倍に拡大 */
 .js-zoom-image {
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  transform: scale(1.5);
+  transform: scale(1.5); /* 初期状態：1.5倍 */
   will-change: transform;
   filter: brightness(80%);
-  transition: none !important; /* GSAPとの干渉防止 */
 }
 
 .hero-text {
@@ -68,7 +61,6 @@ body {
   font-weight: 400;
 }
 
-/* タイトルの初期状態（透明・少し下） */
 .js-title {
   opacity: 0;
   transform: translateY(40px);
