@@ -1,17 +1,18 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. 画像のズームアウト（一度きり）
+// 1. 画像のズームアウト（一度きり・比率維持）
 const zoomImages = document.querySelectorAll('.js-zoom-image');
 
 zoomImages.forEach((img) => {
     gsap.to(img, {
-        scale: 1, // 横幅100%の状態へ
-        duration: 1.8, // ゆったりと1.8秒かけて
+        scale: 1,
+        duration: 1.8,
         ease: "power2.out",
+        clearProps: "scale", // アニメーション終了後に scale 設定をクリア
         scrollTrigger: {
             trigger: img,
             start: "top 75%", // 画面の下から25%の位置で開始
-            once: true // 1回のみ実行
+            once: true
         }
     });
 });
