@@ -1,32 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap');
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  /* 横揺れ防止の要 */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
   font-family: 'Noto Serif JP', serif;
   color: #111;
   background: #fff;
   line-height: 1.8;
-  overflow-x: hidden;
 }
 
-/* アニメーション用のコンテナ */
+/* アニメーション用の外枠 */
 .js-zoom-section {
   position: relative;
+  height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
   width: 100%;
+  /* 拡大画像が枠外に出ないようにする */
   overflow: hidden;
 }
 
 .zoom-container {
   width: 100%;
-  height: 80vh; /* 画像の表示高さ（お好みで調整してください） */
+  height: 100vh;
   overflow: hidden;
 }
 
 .js-zoom-image {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
-  /* 初期状態：大きく表示 */
+  /* 最初は1.5倍に拡大（overflow:hiddenによりはみ出しは見えない） */
   transform: scale(1.5);
   will-change: transform;
   filter: brightness(80%);
@@ -40,21 +50,43 @@ body {
   z-index: 10;
 }
 
-.hero h1 { font-size: 2.5rem; font-weight: 400; margin-bottom: 1rem; }
-.hero p { font-size: 1.2rem; }
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
 
 .section {
   max-width: 900px;
-  margin: 100px auto;
+  margin: 150px auto;
   padding: 0 20px;
 }
 
-.section h2 { font-size: 1.6rem; margin-bottom: 30px; font-weight: 400; }
-.js-title { opacity: 0; transform: translateY(30px); }
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
 
-.section p { font-size: 1rem; color: #333; }
+.js-title {
+  opacity: 0;
+  transform: translateY(40px);
+}
 
-.cta { text-align: center; margin-bottom: 150px; }
+.section p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.cta {
+  text-align: center;
+  margin-bottom: 150px;
+}
+
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -64,9 +96,13 @@ body {
   color: #111;
   transition: all 0.3s ease;
 }
-.btn:hover { background: #111; color: #fff; }
+
+.btn:hover {
+  background: #111;
+  color: #fff;
+}
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.8rem; }
-  .section { margin: 60px auto; }
+  .section { margin: 80px auto; }
 }
