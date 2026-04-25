@@ -133,3 +133,15 @@ body {
     opacity: 0;
     transform: translateY(40px);
 }
+/* メインビジュアルもアニメーションさせるための追加設定 */
+.hero {
+    height: 150vh; /* 100vhから150vhに変更して遊びを作る */
+    position: relative;
+    overflow: visible; /* stickyを効かせるためにvisibleに */
+}
+
+.hero img.js-zoom-image {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
