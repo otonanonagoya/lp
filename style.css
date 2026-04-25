@@ -8,16 +8,31 @@ body {
   line-height: 1.8;
 }
 
-.hero {
+/* アニメーション用の外枠 */
+.js-zoom-section {
   position: relative;
+  height: 150vh; /* スクロールの長さ */
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* 画像を画面に固定する枠 */
+.zoom-container {
+  position: sticky;
+  top: 0;
   height: 100vh;
+  width: 100%;
   overflow: hidden;
 }
 
-.hero img {
+/* 画像の初期状態 */
+.js-zoom-image {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
+  transform: scale(1.3);
+  will-change: transform;
   filter: brightness(80%);
 }
 
@@ -26,6 +41,7 @@ body {
   bottom: 15%;
   left: 10%;
   color: white;
+  z-index: 10;
 }
 
 .hero h1 {
@@ -50,20 +66,19 @@ body {
   font-weight: 400;
 }
 
+/* タイトルの初期状態（透明・少し下） */
+.js-title {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
 .section p {
   font-size: 1rem;
   color: #333;
 }
 
 .image-section {
-  padding: 0;
-  margin: 80px 0;
-}
-
-.image-section img {
-  width: 100%;
-  height: auto;
-  display: block;
+  margin: 100px 0;
 }
 
 .cta {
@@ -86,62 +101,7 @@ body {
   color: #fff;
 }
 
-/* レスポンシブ */
 @media (max-width: 768px) {
-  .hero-text {
-    left: 5%;
-    right: 5%;
-  }
-
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .section {
-    margin: 80px auto;
-  }
-}
-/* --- アニメーション用の下準備 --- */
-
-/* 外枠：150vhにすることで、1.5画面分スクロールする間アニメーションが続くようになります */
-.js-zoom-section {
-    height: 150vh;
-    padding: 0 !important;
-    margin: 100px 0;
-}
-
-/* 固定枠：スクロール中、画像が画面にピタッと止まるようにします */
-.zoom-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-
-/* 画像本体：最初は1.3倍に大きくし、中央に配置します */
-.js-zoom-image {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    transform: scale(1.3);
-    will-change: transform;
-}
-
-/* タイトルの初期状態：透明で、少し下に配置 */
-.js-title {
-    opacity: 0;
-    transform: translateY(40px);
-}
-/* メインビジュアルもアニメーションさせるための追加設定 */
-.hero {
-    height: 150vh; /* 100vhから150vhに変更して遊びを作る */
-    position: relative;
-    overflow: visible; /* stickyを効かせるためにvisibleに */
-}
-
-.hero img.js-zoom-image {
-    position: sticky;
-    top: 0;
-    height: 100vh;
+  .hero h1 { font-size: 1.8rem; }
+  .section { margin: 80px auto; }
 }
