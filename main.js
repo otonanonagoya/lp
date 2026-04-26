@@ -1,30 +1,42 @@
 gsap.registerPlugin(ScrollTrigger);
-// 1. 画像のズームアウト（一度きり）
+
+// 1. 画像のズームアウト（一度きり・横幅100%維持）
 const zoomImages = document.querySelectorAll('.js-zoom-image');
+
 zoomImages.forEach((img) => {
-gsap.to(img, {
-scale: 1,
-duration: 1.8, // 1.8秒かけてゆったり引く
-ease: "power2.out",
-scrollTrigger: {
-trigger: img,
-start: "top 75%", // 画面の下から25%の位置で開始
-once: true // 実行は一度のみ
-}
+  gsap.to(img, {
+    scale: 1,
+    duration: 1.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      // トリガーを画像本体ではなく親コンテナに変更し、動作を安定化
+      trigger: img.parentElement, 
+      start: "top 75%",
+      once: true
+    }
+  });
 });
-});
-// 2. タイトルとテキストの浮き上がり（一度きり）
+
+// 2. タイトルの浮き上がり（CSSに頼らず確実に出現させる方式）
 const titles = document.querySelectorAll('.js-title');
+
 titles.forEach((title) => {
-gsap.to(title, {
-opacity: 1,
-y: 0,
-duration: 1.2,
-ease: "power3.out",
-scrollTrigger: {
-trigger: title,
-start: "top 85%", // 画面の下から15%の位置で開始
-once: true
-}
-});
+  // fromTo を使って、初期状態（透明）から完了状態へ確実にアニメーションさせる
+  gsap.fromTo(title,
+    { 
+      opacity: 0, 
+      y: 30 
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: title,
+        start: "top 85%",
+        once: true
+      }
+    }
+  );
 });
