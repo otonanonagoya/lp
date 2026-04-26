@@ -1,149 +1,32 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* 既存ベースはそのまま活用＋拡張 */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
 }
 
-body {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-  background: #0b0b0b;
-  color: #eae7df;
-  line-height: 1.9;
-  overflow-x: hidden;
-}
-
-/* ゴールドアクセント */
-:root {
-  --gold: #c9a96a;
-}
-
-img {
-  width: 100%;
-  display: block;
-}
-
-/* ヒーロー */
-.hero {
-  position: relative;
-  height: 100vh;
-}
-
-.hero-image {
-  height: 100%;
-  overflow: hidden;
-}
-
-.hero-image img {
-  filter: brightness(0.75);
-}
-
-.hero-text {
-  position: absolute;
-  bottom: 12%;
-  left: 8%;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
+h3 {
   color: var(--gold);
-  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
-.hero-text p {
-  margin-top: 10px;
-  font-size: 1.1rem;
+.results {
+  list-style: none;
+  margin-top: 40px;
 }
 
-/* セクション */
-.section {
-  padding: 140px 20px;
+.results li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(201,169,106,0.3);
 }
 
-.section.dark {
-  background: #111;
-}
-
-.container {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.container.narrow {
-  max-width: 700px;
-}
-
-h2 {
-  font-size: 1.9rem;
-  color: var(--gold);
-  margin-bottom: 30px;
-  letter-spacing: 0.08em;
-}
-
-p {
-  font-size: 1.05rem;
-  color: #d6d3cc;
-}
-
-/* 画像ブロック */
-.image-block {
-  margin: 120px 0;
-}
-
-/* CTA */
-.closing {
-  text-align: center;
-}
-
-.cta {
-  display: inline-block;
-  margin-top: 50px;
-  padding: 16px 50px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  text-decoration: none;
-  transition: 0.4s;
-  letter-spacing: 0.1em;
-}
-
-.cta:hover {
-  background: var(--gold);
-  color: #000;
-}
-
-/* アニメーション */
-.reveal-text {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1.2s ease;
-}
-
-.reveal-text.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-img img {
-  transform: scale(1.3);
-  transition: 1.8s ease;
-}
-
-.reveal-img.active img {
-  transform: scale(1);
-}
-
-/* レスポンシブ */
+/* スマホ */
 @media (max-width: 768px) {
-
-  .hero-text {
-    left: 5%;
-    bottom: 15%;
-  }
-
-  .hero-text h1 {
-    font-size: 1.8rem;
-  }
-
-  .section {
-    padding: 90px 20px;
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
