@@ -6,9 +6,7 @@ const triggerAnimation = () => {
 
   images.forEach(el => {
     if (el.classList.contains('active')) return;
-
     const rect = el.getBoundingClientRect().top;
-
     if (rect < triggerLine) {
       el.classList.add('active');
     }
@@ -16,9 +14,7 @@ const triggerAnimation = () => {
 
   texts.forEach(el => {
     if (el.classList.contains('active')) return;
-
     const rect = el.getBoundingClientRect().top;
-
     if (rect < triggerLine) {
       el.classList.add('active');
     }
