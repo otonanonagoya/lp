@@ -11,12 +11,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== セクション ===== */
+/* セクション */
 .section {
   padding: 120px 0;
 }
 
-/* ===== 画像 ===== */
+/* 画像 */
 .image-wrap {
   width: 100%;
   overflow: hidden;
@@ -35,7 +35,7 @@ body {
   transform: scale(1);
 }
 
-/* ===== テキスト ===== */
+/* テキスト */
 .text {
   max-width: 800px;
   margin: 60px auto 0;
@@ -52,9 +52,8 @@ body {
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-bottom: 20px;
-  letter-spacing: 0.05em;
 }
 
 p {
@@ -68,7 +67,20 @@ p {
   opacity: 0.8;
 }
 
-/* ===== グリッド ===== */
+/* FV専用 */
+.label {
+  color: #c9a96a;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 15px;
+}
+
+.lead {
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+/* グリッド */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,17 +93,16 @@ p {
   margin-bottom: 5px;
 }
 
-/* ===== リスト ===== */
+/* リスト */
 ul {
   margin-top: 20px;
 }
 
 li {
   margin-bottom: 10px;
-  color: #ddd;
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .cta {
   margin-top: 30px;
   display: inline-block;
@@ -107,7 +118,7 @@ li {
   color: #000;
 }
 
-/* ===== レスポンシブ ===== */
+/* レスポンシブ */
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
