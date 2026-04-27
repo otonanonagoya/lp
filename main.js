@@ -1,31 +1,14 @@
-const images = document.querySelectorAll('.image-wrap');
-const texts = document.querySelectorAll('.text');
-const overlays = document.querySelectorAll('.overlay-text');
+const targets = document.querySelectorAll('.image-wrap, .text, .overlay-text');
 
-const triggerAnimation = () => {
-  const triggerLine = window.innerHeight * 0.75;
-
-  images.forEach(el => {
-    if (el.classList.contains('active')) return;
-    if (el.getBoundingClientRect().top < triggerLine) {
-      el.classList.add('active');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
     }
   });
+}, {
+  rootMargin: "0px 0px -25% 0px"
+});
 
-  texts.forEach(el => {
-    if (el.classList.contains('active')) return;
-    if (el.getBoundingClientRect().top < triggerLine) {
-      el.classList.add('active');
-    }
-  });
-
-  overlays.forEach(el => {
-    if (el.classList.contains('active')) return;
-    if (el.getBoundingClientRect().top < triggerLine) {
-      el.classList.add('active');
-    }
-  });
-};
-
-window.addEventListener('scroll', triggerAnimation);
-window.addEventListener('load', triggerAnimation);
+targets.forEach(el => observer.observe(el));
