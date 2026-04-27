@@ -1,4 +1,6 @@
-const targets = document.querySelectorAll('.image-wrap, .text, .overlay-text');
+const targets = document.querySelectorAll(
+  '.image-zoom, .text, .overlay-text'
+);
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
