@@ -140,12 +140,14 @@ body {
   }
 
   .image-wrap {
-    max-width: 900px;
+    width: 80%;
+    max-width: 720px;
     margin: 0 auto;
   }
 
   .text {
-    max-width: 900px;
+    width: 80%;
+    max-width: 720px;
     margin: 40px auto 0;
   }
 
