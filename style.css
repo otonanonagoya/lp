@@ -1,76 +1,119 @@
-/* ===== iOS対応ヒーロー ===== */
-.hero {
-  position: relative;
-  min-height: 100svh; /* ← これが重要 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hero-image img {
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Hiragino Mincho ProN", serif;
+  overflow-x: hidden;
+}
+
+/* ===== セクション ===== */
+.section {
+  padding: 120px 0;
+}
+
+/* ===== 画像 ===== */
+.image-wrap {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
-/* 上にかかるグラデーション（高級感） */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.85)
-  );
+.image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  transform: scale(1.5);
+  transition: transform 2s ease;
 }
 
-/* テキスト改善 */
-.hero-text {
-  position: absolute;
-  bottom: 12%;
-  left: 6%;
-  right: 6%;
-  z-index: 2;
+.image-wrap.active img {
+  transform: scale(1);
 }
 
-.hero-text h1 {
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  line-height: 1.5;
+/* ===== テキスト ===== */
+.text {
+  max-width: 800px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+}
+
+.text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
   letter-spacing: 0.05em;
 }
 
-.hero-text p {
-  margin-top: 16px;
-  font-size: 1rem;
-  line-height: 1.9;
+p {
+  line-height: 2;
+  color: #ccc;
 }
 
-.hero-text small {
-  display: block;
-  margin-top: 16px;
-  font-size: 0.85rem;
+.sub {
+  margin-top: 20px;
+  font-size: 0.9rem;
   opacity: 0.8;
 }
 
-/* セクション余白調整 */
-.section {
-  padding: 100px 20px;
+/* ===== グリッド ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
 }
 
-/* スマホ最適化 */
-@media (max-width: 768px) {
+.grid h3 {
+  color: #c9a96a;
+  margin-bottom: 5px;
+}
 
-  body {
-    line-height: 2;
+/* ===== リスト ===== */
+ul {
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+/* ===== CTA ===== */
+.cta {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 15px 40px;
+  border: 1px solid #c9a96a;
+  color: #c9a96a;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.cta:hover {
+  background: #c9a96a;
+  color: #000;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 
   h2 {
     font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  .hero-text {
-    bottom: 10%;
   }
 }
