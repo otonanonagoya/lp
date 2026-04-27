@@ -1,25 +1,29 @@
-const revealTexts = document.querySelectorAll('.reveal-text');
-const revealImgs = document.querySelectorAll('.reveal-img');
+const images = document.querySelectorAll('.image-wrap');
+const texts = document.querySelectorAll('.text');
 
-const triggerPoint = window.innerHeight * 0.75;
+const triggerAnimation = () => {
+  const triggerLine = window.innerHeight * 0.75;
 
-const revealOnScroll = () => {
+  images.forEach(el => {
+    if (el.classList.contains('active')) return;
 
-  revealTexts.forEach(el => {
     const rect = el.getBoundingClientRect().top;
-    if (rect < triggerPoint && !el.classList.contains('active')) {
+
+    if (rect < triggerLine) {
       el.classList.add('active');
     }
   });
 
-  revealImgs.forEach(el => {
+  texts.forEach(el => {
+    if (el.classList.contains('active')) return;
+
     const rect = el.getBoundingClientRect().top;
-    if (rect < triggerPoint && !el.classList.contains('active')) {
+
+    if (rect < triggerLine) {
       el.classList.add('active');
     }
   });
-
 };
 
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
+window.addEventListener('scroll', triggerAnimation);
+window.addEventListener('load', triggerAnimation);
