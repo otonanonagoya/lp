@@ -19,16 +19,20 @@ body {
   overflow: hidden;
 }
 
-/* 画像 */
+/* デフォルト（何もしない） */
 .image-wrap img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ===== ズームアニメーションを付けたい時だけ ===== */
+.image-zoom img {
   transform: scale(1.5);
   transition: transform 1.2s ease-out;
 }
 
-.image-wrap.active img {
+.image-zoom.active img {
   transform: scale(1);
 }
 
