@@ -1,23 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   background: #000;
   color: #fff;
   font-family: "Hiragino Mincho ProN", serif;
   overflow-x: hidden;
 }
 
+/* セクション */
 .section {
-  padding: 120px 0;
+  padding: 100px 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 /* 画像 */
 .image-wrap {
-  width: 100%;
+  position: relative;
   overflow: hidden;
 }
 
@@ -25,24 +23,30 @@ body {
   width: 100%;
   height: auto;
   display: block;
-
   transform: scale(1.5);
-  transition: transform 2s ease;
+  transition: transform 1.2s ease-out;
 }
 
 .image-wrap.active img {
   transform: scale(1);
 }
 
+/* グラデーションマスク */
+.image-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
 /* テキスト */
 .text {
-  max-width: 800px;
-  margin: 60px auto 0;
-  padding: 0 20px;
-
+  margin-top: 40px;
   opacity: 0;
   transform: translateY(40px);
-  transition: 1.2s ease;
+  transition: all 1s ease;
 }
 
 .text.active {
@@ -50,80 +54,16 @@ body {
   transform: translateY(0);
 }
 
-h2 {
-  font-size: 1.9rem;
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 2;
-  color: #ccc;
-}
-
-.sub {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* FV */
-.label {
-  color: #c9a96a;
-  font-size: 0.8rem;
-  margin-bottom: 15px;
-}
-
-.lead {
-  margin-top: 15px;
-  font-size: 1.1rem;
-}
-
-/* グリッド */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-/* CTA */
-.cta {
-  margin-top: 30px;
-  display: inline-block;
-  padding: 15px 40px;
-  border: 1px solid #c9a96a;
-  color: #c9a96a;
-  text-decoration: none;
-}
-
-/* ================= */
 /* オーバーレイ */
-/* ================= */
-
-.image-overlay-wrap {
-  position: relative;
-  margin-top: 40px;
-}
-
-.image-overlay-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-}
-
 .overlay-text {
   position: absolute;
-  bottom: 10%;
-  right: 6%;
-  max-width: 500px;
-
-  color: #d4af37;
-  text-align: right;
-
+  bottom: 8%;
+  left: 8%;
+  right: 8%;
+  z-index: 2;
   opacity: 0;
   transform: translateY(40px);
-  transition: 1.2s ease;
+  transition: all 1s ease;
 }
 
 .overlay-text.active {
@@ -131,40 +71,61 @@ p {
   transform: translateY(0);
 }
 
-.overlay-sub {
-  font-size: 1rem;
-  margin-bottom: 8px;
+/* ゴールド（光アニメーション） */
+.overlay-text .large {
+  font-size: 28px;
+  line-height: 1.6;
+  font-weight: 600;
+
+  background: linear-gradient(
+    120deg,
+    #d4af37,
+    #fff3c4,
+    #d4af37,
+    #b8962e
+  );
+
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-.overlay-sub.small {
-  font-size: 0.85rem;
-  opacity: 0.8;
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-.overlay-main {
-  font-size: 1.8rem;
-  line-height: 1.8;
-  text-shadow: 0 0 20px rgba(212,175,55,0.25);
+.overlay-text .small {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.overlay-text .middle {
+  font-size: 18px;
+  color: #ddd;
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  text-decoration: none;
 }
 
 /* レスポンシブ */
 @media (max-width: 768px) {
-
-  .grid {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 60px 20px;
   }
 
-  .overlay-text {
-    left: 5%;
-    right: 5%;
-    text-align: left;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  .overlay-main {
-    font-size: 1.4rem;
+  .overlay-text .large {
+    font-size: 22px;
   }
 }
