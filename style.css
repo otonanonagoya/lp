@@ -11,7 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-/* セクション */
 .section {
   padding: 120px 0;
 }
@@ -67,11 +66,10 @@ p {
   opacity: 0.8;
 }
 
-/* FV専用 */
+/* FV */
 .label {
   color: #c9a96a;
   font-size: 0.8rem;
-  letter-spacing: 0.1em;
   margin-bottom: 15px;
 }
 
@@ -88,20 +86,6 @@ p {
   margin-top: 30px;
 }
 
-.grid h3 {
-  color: #c9a96a;
-  margin-bottom: 5px;
-}
-
-/* リスト */
-ul {
-  margin-top: 20px;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
 /* CTA */
 .cta {
   margin-top: 30px;
@@ -110,21 +94,77 @@ li {
   border: 1px solid #c9a96a;
   color: #c9a96a;
   text-decoration: none;
-  transition: 0.4s;
 }
 
-.cta:hover {
-  background: #c9a96a;
-  color: #000;
+/* ================= */
+/* オーバーレイ */
+/* ================= */
+
+.image-overlay-wrap {
+  position: relative;
+  margin-top: 40px;
+}
+
+.image-overlay-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 10%;
+  right: 6%;
+  max-width: 500px;
+
+  color: #d4af37;
+  text-align: right;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+}
+
+.overlay-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay-sub {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.overlay-sub.small {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.overlay-main {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  text-shadow: 0 0 20px rgba(212,175,55,0.25);
 }
 
 /* レスポンシブ */
 @media (max-width: 768px) {
+
   .grid {
     grid-template-columns: 1fr;
   }
 
+  .overlay-text {
+    left: 5%;
+    right: 5%;
+    text-align: left;
+  }
+
   h2 {
     font-size: 1.5rem;
+  }
+
+  .overlay-main {
+    font-size: 1.4rem;
   }
 }
