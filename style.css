@@ -152,3 +152,82 @@ body {
   }
 
 }
+/* データグリッドのレイアウト */
+.data-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 30px 20px;
+margin-top: 50px;
+}
+.data-item {
+border-left: 1px solid #d4af37;
+padding-left: 15px;
+}
+.data-item .label {
+font-size: 13px;
+color: #ddd;
+display: block;
+margin-bottom: 5px;
+}
+.data-item .value {
+font-size: 36px;
+font-weight: bold;
+color: #d4af37;
+font-family: serif;
+}
+.data-item .value small {
+font-size: 16px;
+margin-left: 4px;
+}
+.data-item .detail {
+font-size: 12px;
+color: #aaa;
+margin-top: 5px;
+}
+/* 関心事のバーグラフ */
+.interest-list {
+margin-top: 60px;
+}
+.interest-list h3 {
+font-size: 18px;
+margin-bottom: 20px;
+border-bottom: 1px solid #333;
+padding-bottom: 10px;
+}
+.interest-item {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+}
+.interest-item span {
+width: 80px;
+font-size: 14px;
+}
+.bar-bg {
+flex: 1;
+height: 4px;
+background: #222;
+margin: 0 15px;
+overflow: hidden;
+}
+.bar-fill {
+height: 100%;
+background: #d4af37;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.active .bar-fill {
+transform: scaleX(1);
+}
+.interest-item .percent {
+width: 50px;
+text-align: right;
+font-size: 12px;
+color: #d4af37;
+}
+@media (min-width: 1024px) {
+.data-grid {
+grid-template-columns: repeat(4, 1fr);
+}
+}
