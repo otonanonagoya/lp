@@ -242,6 +242,126 @@ body {
   background: #d4af37;
   color: #000;
 }
+.line-banner {
+  margin: 60px auto;
+  max-width: 900px;
+}
+
+.line-banner a {
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 画像 */
+.line-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+/* ホバー演出（ほんの少しだけ） */
+.line-banner a:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* 影 */
+.line-banner a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+/* ← 採用部分（光） */
+.line-banner a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.15)
+  );
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+
+  pointer-events: none; /* ← 重要 */
+}
+
+/* ホバー時に光る */
+.line-banner a:hover::before {
+  opacity: 1;
+}
+
+/* WEBバナー */
+.web-banner {
+  margin: 40px auto 80px;
+  max-width: 900px;
+}
+
+.web-banner a {
+  display: block;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 画像 */
+.web-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* ホバー（LINEより少し控えめ） */
+.web-banner a:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+/* 影（少し軽め） */
+.web-banner a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+/* 光（LINEと統一） */
+.web-banner a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.12)
+  );
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.web-banner a:hover::before {
+  opacity: 1;
+}
 
 /* PCレイアウト調整 */
 @media (min-width: 1024px) {
