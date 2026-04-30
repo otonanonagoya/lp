@@ -1,3 +1,9 @@
+/* レイアウト崩れ防止（必須） */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   background: #000;
