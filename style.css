@@ -362,7 +362,67 @@ body {
 .web-banner a:hover::before {
   opacity: 1;
 }
+.contact-section {
+  max-width: 800px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
 
+.contact-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* フォーム */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 入力 */
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.4);
+  padding: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* プレースホルダー */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* フォーカス */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+/* ボタン */
+.contact-form button {
+  margin-top: 10px;
+  padding: 16px;
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+/* ホバー */
+.contact-form button:hover {
+  background: #d4af37;
+  color: #000;
+}
 /* PCレイアウト調整 */
 @media (min-width: 1024px) {
   .section { padding: 140px 20px; }
