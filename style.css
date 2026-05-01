@@ -1,9 +1,130 @@
-body {
+/* リセット */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background: #000;
   color: #fff;
   font-family: "Hiragino Mincho ProN", serif;
-  overflow-x: hidden;
+}
+
+/* FV全体 */
+.fv {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 左 */
+.fv-left {
+  width: 35%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.fv-inner {
+  max-width: 400px;
+}
+
+.fv-logo {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c9a96e;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+/* タイトル */
+.fv-title {
+  font-size: 48px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+}
+
+/* サブ */
+.fv-sub {
+  font-size: 14px;
+  color: #c9a96e;
+  line-height: 2;
+}
+
+/* 右グリッド */
+.fv-grid {
+  width: 65%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1px;
+  background: #111;
+}
+
+/* 画像 */
+.grid-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-item.large {
+  grid-row: span 2;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 1.2s ease;
+}
+
+/* ホバー（PCのみ有効） */
+@media (hover: hover) {
+  .grid-item:hover img {
+    transform: scale(1.15);
+  }
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+
+  .fv {
+    flex-direction: column;
+  }
+
+  .fv-left {
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .fv-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fv-title {
+    font-size: 32px;
+  }
+
+}
+.fv-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.fv-title.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fv-grid {
+  gap: 1px;
+  background: #2a2115;
 }
 
 /* セクション共通 */
