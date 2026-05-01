@@ -373,6 +373,51 @@ body {
   margin-bottom: 40px;
   line-height: 1.6;
 }
+/* =========================
+   ゴールドボタン（完全版）
+========================= */
+.contact-form button {
+  margin-top: 10px;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+
+  background: linear-gradient(
+    135deg,
+    #d4af37,
+    #f6e27a,
+    #d4af37,
+    #b8962e
+  );
+  background-size: 200% 200%;
+
+  animation: goldFlow 8s linear infinite;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ホバー */
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+}
+
+/* 押した時 */
+.contact-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(212,175,55,0.2);
+}
+
+/* 光の流れ */
+@keyframes goldFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
 
 /* フォーム */
 .contact-form {
