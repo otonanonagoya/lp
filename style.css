@@ -670,14 +670,19 @@ body {
    FVコラージュ（安全版）
 ===================== */
 
-.fv-collage {
-  display: flex;
+  .fv-collage {
+  display: grid;
+
+  /* ←これが核心 */
+  grid-template-columns: 22% 39% 39%;
+
   height: 100svh;
   overflow: hidden;
 }
 
 /* 左テキスト */
 .fv-collage .fv-left {
+  grid-column: 1
   width: 30%;
   display: flex;
   align-items: center;
@@ -703,13 +708,13 @@ body {
 
 /* 右グリッド */
 .fv-collage .fv-grid {
-  width: 70%;
+  grid-column: 2 / 4;
+
   display: grid;
 
-  /* ←ここが一番重要 */
-  height: 100%;
-  grid-template-rows: 42% 22% 18% 18%;
-  
+  grid-template-columns: 1fr 1fr; /* ←ここで2分割 */
+
+  grid-template-rows: 40% 25% 20% 15%;
   gap: 1px;
   background: #2a2115;
 }
