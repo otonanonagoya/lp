@@ -15,10 +15,7 @@ body {
   width: 65%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  /* ←これだけ残す */
   grid-template-rows: 40vh 30vh 30vh 30vh;
-
   gap: 1px;
   background: #2a2115;
 }
@@ -511,20 +508,45 @@ body {
   .image-wrap, .text { width: 80%; max-width: 720px; margin: 40px auto 0; }
   .data-grid { grid-template-columns: repeat(4, 1fr); }
   grid-template-rows: 400px 300px 300px 300px;
+
+  .fv-grid {
+    grid-template-rows: 420px 300px 300px 300px;
+  }
 }
 @media (max-width: 768px) {
 
-  .fv {
-    flex-direction: column;
-  }
-
   .fv-grid {
     width: 100%;
-
-    /* 配置リセット */
     grid-template-columns: 1fr;
     grid-template-rows: none;
   }
+
+  /* ❌削除 */
+  /*
+  .grid-item {
+    height: 220px;
+  }
+  */
+
+  /* ✅これに変更 */
+  .grid-item {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* 配置リセット */
+  .item1,
+  .item2,
+  .item3,
+  .item4,
+  .item5,
+  .item6,
+  .item7 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+    /* 配置リセット */
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
 
   .grid-item {
     height: 220px;
