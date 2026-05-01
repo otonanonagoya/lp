@@ -14,14 +14,14 @@ body {
 .fv-grid {
   width: 65%;
   display: grid;
+  grid-template-columns: 1fr 1fr;
 
-    grid-template-columns: 1fr 1fr;
-
-  grid-template-rows: 400px 300px 300px 300px;
+  /* ←これだけ残す */
+  grid-template-rows: 40vh 30vh 30vh 30vh;
 
   gap: 1px;
-
   background: #2a2115;
+}
   /* 明示的に設計 */
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 40vh 30vh 30vh 30vh;
@@ -511,15 +511,6 @@ body {
   .image-wrap, .text { width: 80%; max-width: 720px; margin: 40px auto 0; }
   .data-grid { grid-template-columns: repeat(4, 1fr); }
   grid-template-rows: 400px 300px 300px 300px;
-}.fv-grid {
-  width: 65%;
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 400px 300px 300px 300px;
-
-  gap: 1px;
-  background: #2a2115;
 }
 @media (max-width: 768px) {
 
