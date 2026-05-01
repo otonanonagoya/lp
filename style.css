@@ -14,8 +14,10 @@ body {
 }
 
 /* =====================
-   FVグリッド（PC）
+   FVコラージュ（完全上書き）
 ===================== */
+
+/* FV全体をスコープ化（他に影響させない） */
 .fv-grid {
   width: 65%;
   margin-left: auto;
@@ -23,39 +25,103 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  /* ←これだけでOK（重複禁止） */
-  grid-template-rows: 40vh 30vh 30vh 30vh;
+  /* 参考画像に寄せた比率 */
+  grid-template-rows: 42vh 28vh 30vh 30vh;
 
   gap: 1px;
   background: #2a2115;
 }
 
 /* =====================
-   配置（PC）
+   配置（コラージュ構成）
 ===================== */
-.item1 { grid-column: 1; grid-row: 1 / 3; }
-.item2 { grid-column: 2; grid-row: 1; }
 
-.item3 { grid-column: 1; grid-row: 3; }
-.item4 { grid-column: 2; grid-row: 2; }
+/* 左上：大（職人） */
+.item1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
 
-.item5 { grid-column: 1; grid-row: 4; }
-.item6 { grid-column: 2; grid-row: 3; }
-.item7 { grid-column: 2; grid-row: 4; }
+/* 右上：カウンター */
+.item2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* 左中：料理 */
+.item3 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+/* 右中上：廊下 */
+.item4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* 左下：寿司手元 */
+.item5 {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+/* 右中下：個室 */
+.item6 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* 右下：庭 */
+.item7 {
+  grid-column: 2;
+  grid-row: 4;
+}
 
 /* =====================
-   画像
+   画像スタイル
 ===================== */
-.grid-item {
+.fv-grid .grid-item {
+  position: relative;
   overflow: hidden;
   border: 1px solid rgba(201,169,110,0.15);
 }
 
-.grid-item img {
+.fv-grid .grid-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.92) contrast(1.05);
+
+  /* 高級感のコントラスト調整 */
+  filter: brightness(0.88) contrast(1.08);
+  transition: transform 1.2s ease;
+}
+
+/* ほんのりズーム（高級LPっぽさ） */
+.fv-grid .grid-item:hover img {
+  transform: scale(1.04);
+}
+
+/* =====================
+   PC微調整（大型画面）
+===================== */
+@media (min-width: 1200px) {
+  .fv-grid {
+    grid-template-rows: 460px 300px 300px 300px;
+  }
+}
+
+/* =====================
+   タブレット
+===================== */
+@media (max-width: 1024px) {
+  .fv-grid {
+    width: 100%;
+    margin: 0;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 36vh 26vh 26vh 26vh;
+  }
 }
 
 /* =====================
@@ -67,35 +133,24 @@ body {
     width: 100%;
     margin: 0;
 
-    /* 1カラムにする */
     grid-template-columns: 1fr;
     grid-template-rows: none;
   }
 
-  /* 比率で高さを制御（←これ重要） */
-  .grid-item {
+  .fv-grid .grid-item {
     aspect-ratio: 3 / 4;
   }
 
   /* 配置リセット */
-  .item1,
-  .item2,
-  .item3,
-  .item4,
-  .item5,
-  .item6,
-  .item7 {
+  .fv-grid .item1,
+  .fv-grid .item2,
+  .fv-grid .item3,
+  .fv-grid .item4,
+  .fv-grid .item5,
+  .fv-grid .item6,
+  .fv-grid .item7 {
     grid-column: auto;
     grid-row: auto;
-  }
-}
-
-/* =====================
-   PC微調整
-===================== */
-@media (min-width: 1024px) {
-  .fv-grid {
-    grid-template-rows: 420px 300px 300px 300px;
   }
 }
 
