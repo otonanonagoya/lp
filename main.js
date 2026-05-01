@@ -47,3 +47,30 @@ const observer = new IntersectionObserver((entries) => {
 
 // 4. 監視の開始
 targets.forEach(el => observer.observe(el));
+// フェードイン + ズームアウト
+window.addEventListener("load", () => {
+
+  const items = document.querySelectorAll(".grid-item img");
+
+  items.forEach((img, i) => {
+    img.style.opacity = 0;
+    img.style.transform = "scale(1.2)";
+
+    setTimeout(() => {
+      img.style.transition = "all 1.2s ease";
+      img.style.opacity = 1;
+      img.style.transform = "scale(1.05)";
+    }, i * 120);
+  });
+
+});
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+
+  document.querySelectorAll(".grid-item img").forEach((img, i) => {
+    img.style.transform = `scale(1.05) translateY(${scroll * (0.02 + i*0.005)}px)`;
+  });
+});
+window.addEventListener("load", () => {
+  document.querySelector(".fv-title").classList.add("active");
+});
