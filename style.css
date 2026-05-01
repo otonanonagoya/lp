@@ -227,21 +227,6 @@ body {
   color: #aaa;
 }
 
-/* CTAボタン */
-.cta {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.cta:hover {
-  background: #d4af37;
-  color: #000;
-}
 .line-banner {
   margin: 60px auto;
   max-width: 900px;
