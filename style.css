@@ -707,8 +707,8 @@ body {
   display: grid;
 
   /* ←ここが一番重要 */
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 45% 27% 28%;
+  height: 100%;
+  grid-template-rows: 42% 22% 18% 18%;
   
   gap: 1px;
   background: #2a2115;
@@ -752,7 +752,6 @@ body {
 
 /* 画像 */
 .fv-collage .grid-item img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
 
