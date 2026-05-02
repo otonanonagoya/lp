@@ -442,19 +442,6 @@ body {
   border-color: #d4af37;
 }
 
-/* ボタン */
-.contact-form button {
-  margin-top: 10px;
-  padding: 16px;
-  background: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
 /* ホバー */
 .contact-form button:hover {
   background: #d4af37;
