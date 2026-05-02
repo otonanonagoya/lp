@@ -666,44 +666,7 @@ body {
     grid-row: auto;
   }
 }
-/* =====================
-   FVコラージュ（安全版）
-===================== */
 
-.fv-collage {
-  display: grid;
-  grid-template-columns: 33% 33.5% 33.5%;
-  height: 100svh;
-}
-
-/* 共通 */
-.fv-col {
-  display: grid;
-}
-
-/* 左：2分割 */
-.col-left {
-  grid-template-rows: 66% 34%;
-}
-
-/* 中：3分割 */
-.col-center {
-  grid-template-rows: 40% 30% 30%;
-}
-
-/* 右：3分割 */
-.col-right {
-  grid-template-rows: 40% 30% 30%;
-}
-
-/* 画像 */
-.grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-  filter: brightness(0.85) contrast(1.1);
-}
 /* =====================
    フルスクリーン背景
 ===================== */
