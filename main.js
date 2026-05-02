@@ -75,15 +75,14 @@ window.addEventListener("load", () => {
   document.querySelector(".fv-title").classList.add("active");
 });
 // =====================
-// フラッシュアニメーション + スクロール背景消去
+// スクロール連動：背景画像消去
 // =====================
 
-// スクロール時のイベントリスナー
 window.addEventListener('scroll', () => {
-  const fvBg = document.querySelector('.fv-bg');
+  const fvBgContainer = document.querySelector('.fv-bg-container');
   const fvSection = document.querySelector('.fv-fullscreen');
   
-  if (!fvBg || !fvSection) return;
+  if (!fvBgContainer || !fvSection) return;
   
   // ビューポート上部からFVセクション下部までの距離
   const fvRect = fvSection.getBoundingClientRect();
@@ -92,11 +91,8 @@ window.addEventListener('scroll', () => {
   // スクロール進度（0 = 上部、1 = 下部）
   const scrollProgress = Math.max(0, -fvRect.top / fvHeight);
   
-  // 背景の不透明度（スクロールに応じてフェードアウト）
-  fvBg.style.opacity = Math.max(0, 1 - scrollProgress);
-  
-  // オプション：背景がスクロールより遅れて動く視差効果
-  fvBg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+  // 背景コンテナの不透明度（スクロールに応じてフェードアウト）
+  fvBgContainer.style.opacity = Math.max(0, 1 - scrollProgress);
 });
 
 // =====================
