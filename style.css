@@ -672,7 +672,7 @@ body {
 
 .fv-collage {
   display: grid;
-  grid-template-columns: 22% 39% 39%;
+  grid-template-columns: 33% 33.5% 33.5%;
   height: 100svh;
 }
 
@@ -683,7 +683,7 @@ body {
 
 /* 左：2分割 */
 .col-left {
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 66% 34%;
 }
 
 /* 中：3分割 */
