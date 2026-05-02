@@ -66,8 +66,6 @@ targets.forEach(el => observer.observe(el));
 // フェードイン + ズームアウト
 window.addEventListener("load", () => {
 
-  const items = document.querySelectorAll(".grid-item img");
-
   items.forEach((img, i) => {
     img.style.opacity = 0;
     img.style.transform = "scale(1.2)";
