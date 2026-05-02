@@ -358,8 +358,9 @@ body {
 }
 .contact-section {
   max-width: 800px;
-  margin: 120px auto;
+  margin: 0 auto;
   padding: 120px 20px;
+  background: #000;
 }
 
 .contact-section h2 {
