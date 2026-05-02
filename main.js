@@ -84,14 +84,11 @@ window.addEventListener('scroll', () => {
   
   if (!fvBgContainer || !fvSection) return;
   
-  // ビューポート上部からFVセクション下部までの距離
   const fvRect = fvSection.getBoundingClientRect();
   const fvHeight = fvSection.offsetHeight;
   
-  // スクロール進度（0 = 上部、1 = 下部）
   const scrollProgress = Math.max(0, -fvRect.top / fvHeight);
   
-  // 背景コンテナの不透明度（スクロールに応じてフェードアウト）
   fvBgContainer.style.opacity = Math.max(0, 1 - scrollProgress);
 });
 
