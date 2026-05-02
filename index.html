@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- シンプルなヘッダー（ナビゲーションなし） -->
-<header class="site-header">
-    <h1 class="brand-name">
-        大人の名古屋
-        <span>Luxury Magazine for the Sophisticated</span>
-    </h1>
-</header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大人の名古屋</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<!-- FV: フルスクリーンヒーロー -->
-<section class="fv hero-section">
-    <div class="hero-container">
-        <div class="fv-col col-left">
-            <div class="grid-item"><img src="fv7.webp"></div>
-        </div>
-        <div class="fv-col col-center">
-            <div class="grid-item"><img src="fv1.webp"></div>
-            <div class="grid-item"><img src="fv3.webp"></div>
-            <div class="grid-item"><img src="fv5.webp"></div>
-        </div>
-        <div class="fv-col col-right">
-            <div class="grid-item"><img src="fv2.webp"></div>
-            <div class="grid-item"><img src="fv4.webp"></div>
-            <div class="grid-item"><img src="fv6.webp"></div>
-        </div>
-    </div>
+<body>
+
+<section class="fv fv-collage">
+
+  <!-- 左 -->
+  <div class="fv-col col-left">
+
+  <!-- 上：テキスト -->
+  <div class="fv-left">
+  <h1 class="fv-title">
+        一瞬を、<br>作品に。
+      </h1>
+
+      <p class="fv-sub">
+        料理・空間・人物を、<br>
+        最高の一枚に
+      </p>
+  </div>
+
+  <!-- 下：画像（追加） -->
+  <div class="grid-item">
+    <img src="fv7.webp">
+  </div>
+
+</div>
+
+  <!-- 中 -->
+  <div class="fv-col col-center">
+    <div class="grid-item"><img src="fv1.webp"></div>
+    <div class="grid-item"><img src="fv3.webp"></div>
+    <div class="grid-item"><img src="fv5.webp"></div>
+  </div>
+
+  <!-- 右 -->
+  <div class="fv-col col-right">
+    <div class="grid-item"><img src="fv2.webp"></div>
+    <div class="grid-item"><img src="fv4.webp"></div>
+    <div class="grid-item"><img src="fv6.webp"></div>
+  </div>
+
 </section>
 
 <!-- ② -->
@@ -45,16 +67,16 @@
 
 <section class="section">
   <div class="image-wrap image-zoom">
-    <img src="cemediahousemagazine.webp" alt="">
-  </div>
-
-  <div class="text">
+  <img src="cemediahousemagazine.webp" alt="">
+　<div class="text">
     <h2>「権威性」へ昇華。</h2>
     <p>
       「Pen」「Figaro japon」「Newsweek」などを手掛ける出版社CEメディアハウス。<br>
       そのDNAを継承された妥協無き雑誌造りが、本物を生み出す。
     </p>
   </div>
+  
+</div>
 
 </section>
 
@@ -200,7 +222,6 @@
       私たちがすべての技術で支えます。
     </p>
   </div>
-</section>
 
 <section class="section">
   <div class="text">
@@ -250,15 +271,15 @@
         </tr>
       </table>
       <div class="web-banner">
-        <a href="https://otona-no-nagoya.com" target="_blank">
-          <img src="webbanner.webp" alt="WEB 大人の名古屋">
-        </a>
-      </div>
+  <a href="https://otona-no-nagoya.com" target="_blank">
+    <img src="webbanner.webp" alt="WEB 大人の名古屋">
+  </a>
+</div>
       <div class="line-banner">
-        <a href="https://line.me/R/ti/p/@005vtnqf" target="_blank">
-          <img src="linebanner.webp" alt="大人の名古屋 LINE公式アカウント">
-        </a>
-      </div>
+  <a href="https://line.me/R/ti/p/@005vtnqf" target="_blank">
+    <img src="linebanner.webp" alt="大人の名古屋 LINE公式アカウント">
+  </a>
+</div>
     </div>
 
     <div class="price-category">
@@ -279,15 +300,23 @@
   <h2>お問い合わせ</h2>
 
   <form action="https://formspree.io/f/mpqbzpop" method="POST" class="contact-form">
+
     <input type="text" name="company" placeholder="会社名・屋号" required>
+
     <input type="text" name="name" placeholder="担当者名" required>
+
     <input type="tel" name="tel" placeholder="電話番号">
+
     <input type="email" name="email" placeholder="メールアドレス" required>
+
     <textarea name="message" rows="6" placeholder="お問い合わせ内容" required></textarea>
+
     <button type="submit">掲載について相談する</button>
+
   </form>
+  </div>
 </section>
 
 <script src="main.js"></script>
 </body>
-</html>
+</html> 
