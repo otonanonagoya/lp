@@ -445,3 +445,146 @@ body {
     aspect-ratio: 3 / 4;
   }
 }
+
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --accent-color: #d4af37;
+    --font-size-h1: clamp(24px, 4vw, 48px);
+    --font-size-base: clamp(14px, 1vw + 10px, 16px);
+    --side-padding: clamp(20px, 8vw, 120px);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Hiragino Mincho ProN", serif;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* ヘッダー: シンプルに固定 */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px var(--side-padding);
+    z-index: 100;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.brand-name {
+    font-size: var(--font-size-h1);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.15em;
+    line-height: 1.2;
+}
+
+.brand-name span {
+    display: block;
+    font-size: 0.35em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-top: 8px;
+}
+
+/* FVセクション: フルスクリーン */
+.fv.hero-section {
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 22% 39% 39%;
+    height: 100%;
+}
+
+.fv-col {
+    display: grid;
+}
+
+.col-left {
+    grid-template-rows: 1fr 1fr;
+}
+
+.col-center {
+    grid-template-rows: 40% 30% 30%;
+}
+
+.col-right {
+    grid-template-rows: 40% 30% 30%;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) contrast(1.1);
+    transition: transform 1.2s var(--ease-out-expo);
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+}
+
+/* スクロール パララックス */
+.grid-item img {
+    will-change: transform;
+}
+
+/* レスポンシブ: タブレット */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .site-header {
+        padding: 20px var(--side-padding);
+    }
+}
+
+/* レスポンシブ: スマートフォン */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .fv-col {
+        grid-template-rows: auto !important;
+    }
+
+    .grid-item {
+        aspect-ratio: 3 / 4;
+        min-height: 300px;
+    }
+
+    .site-header {
+        padding: 15px var(--side-padding);
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-name {
+        font-size: clamp(16px, 3vw, 24px);
+    }
+
+    .brand-name span {
+        font-size: 0.6em;
+    }
+}
