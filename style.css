@@ -494,12 +494,9 @@ body {
 /* 個別背景画像 */
 .fv-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;  /* 初期状態：非表示 */
-  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  z-index: 0;
 }
 
 .fv-bg img {
@@ -538,34 +535,52 @@ body {
   }
 }
 
-/* 背景1（0.0秒開始） */
-.fv-bg-1 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.0s forwards,
-            fadeOut 0.8s ease-in 5.8s forwards;
+@keyframes flashSwitch {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: brightness(1.4) blur(6px);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1.1) blur(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fv-bg-1 {
+  animation: flashSwitch 6s infinite;
+  animation-delay: 0s;
+  z-index: 5;
 }
 
-/* 背景2（1.2秒開始） */
-.fv-bg-2 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards,
-            fadeOut 0.8s ease-in 5.8s forwards;
+.fv-bg-2 {
+  animation: flashSwitch 6s infinite;
+  animation-delay: 1.2s;
+  z-index: 4;
 }
 
-/* 背景3（2.4秒開始） */
-.fv-bg-3 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.4s forwards,
-            fadeOut 0.8s ease-in 5.8s forwards;
+.fv-bg-3 {
+  animation: flashSwitch 6s infinite;
+  animation-delay: 2.4s;
+  z-index: 3;
 }
 
-/* 背景4（3.6秒開始） */
-.fv-bg-4 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.6s forwards,
-            fadeOut 0.8s ease-in 5.8s forwards;
+.fv-bg-4 {
+  animation: flashSwitch 6s infinite;
+  animation-delay: 3.6s;
+  z-index: 2;
 }
 
-/* 背景5（4.8秒開始） */
-.fv-bg-5 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 4.8s forwards,
-            fadeOut 0.8s ease-in 5.8s forwards;
+.fv-bg-5 {
+  animation: flashSwitch 6s infinite;
+  animation-delay: 4.8s;
+  z-index: 1;
 }
 
 /* =====================
