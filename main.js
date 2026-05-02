@@ -1,22 +1,4 @@
 // =====================
-// スクロール連動：背景画像消去
-// =====================
-
-window.addEventListener('scroll', () => {
-  const fvBgContainer = document.querySelector('.fv-bg-container');
-  const fvSection = document.querySelector('.fv-fullscreen');
-  
-  if (!fvBgContainer || !fvSection) return;
-  
-  const fvRect = fvSection.getBoundingClientRect();
-  const fvHeight = fvSection.offsetHeight;
-  
-  const scrollProgress = Math.max(0, -fvRect.top / fvHeight);
-  
-  fvBgContainer.style.opacity = Math.max(0, 1 - scrollProgress);
-});
-
-// =====================
 // 従来のカウントアップ + フェードイン
 // =====================
 
