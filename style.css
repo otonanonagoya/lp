@@ -754,3 +754,22 @@ body {
 html {
   background: #000;
 }
+html, body {
+  background: #000;
+  overscroll-behavior: none;
+}
+
+.fv-fullscreen {
+  z-index: -1;
+}
+
+.contact-section {
+  padding-bottom: 160px;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 100px;
+  background: #000;
+}
