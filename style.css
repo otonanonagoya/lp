@@ -730,3 +730,8 @@ body {
 .fv-overlay {
   pointer-events: none;
 }
+.contact-section {
+  position: relative;
+  z-index: 1;
+  background: #000;
+}
