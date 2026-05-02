@@ -18,7 +18,7 @@ body {
 .section {
   padding: 100px 20px;
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   background: #000;
 }
 
@@ -570,6 +570,8 @@ body {
 .section {
   position: relative;
   z-index: 1;
+  margin: 0 auto;       /* ←上下margin消す */
+  padding: 120px 20px;
   background: #000;
 }
 
@@ -735,6 +737,8 @@ body {
 .contact-section {
   position: relative;
   z-index: 1;
+  margin: 0 auto;       /* ←上下margin消す */
+  padding: 120px 20px;
   background: #000;
 }
 .section:first-of-type {
@@ -742,4 +746,11 @@ body {
 }
 .fv-fullscreen {
   z-index: -1; /* ←これにするとさらに安全 */
+}
+body {
+  background: #000;
+}
+
+html {
+  background: #000;
 }
