@@ -754,6 +754,3 @@ body {
 html {
   background: #000;
 }
-html, body {
-  overscroll-behavior: none;
-}
