@@ -747,10 +747,3 @@ body {
 .fv-fullscreen {
   z-index: -1; /* ←これにするとさらに安全 */
 }
-body {
-  background: #000;
-}
-
-html {
-  background: #000;
-}
