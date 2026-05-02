@@ -739,3 +739,6 @@ body {
 .section:first-of-type {
   margin-top: 100vh;
 }
+.fv-fullscreen {
+  z-index: -1; /* ←これにするとさらに安全 */
+}
