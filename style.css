@@ -919,3 +919,161 @@ body {
     aspect-ratio: 16 / 9;
   }
 }
+/* =====================
+   フルスクリーン背景 + フラッシュアニメーション
+===================== */
+
+.fv-fullscreen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 背景画像 */
+.fv-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.fv-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+  /* フラッシュアニメーション */
+  animation: flashIn 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* フラッシュアニメーション */
+@keyframes flashIn {
+  0% {
+    opacity: 0;
+    filter: brightness(0.4) blur(8px);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(0.75) contrast(1.05);
+  }
+}
+
+/* テキストオーバーレイ */
+.fv-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  
+  /* グラデーションオーバーレイ */
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px;
+}
+
+.fv-content {
+  animation: textFadeIn 1.2s ease-out 0.3s both;
+}
+
+/* テキストフェードイン */
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fv-title {
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: 0.02em;
+  max-width: 700px;
+}
+
+.fv-subtitle {
+  font-size: 18px;
+  color: #d4af37;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  max-width: 600px;
+}
+
+/* =====================
+   スクロール連動：背景消去（フェードアウト）
+===================== */
+
+.fv-bg {
+  transition: opacity 0.3s ease;
+}
+
+/* JavaScript で scroll イベント時に opacity を変更 */
+.fv-bg.scrolling-out {
+  opacity: 0;
+}
+
+/* =====================
+   レスポンシブ：タブレット
+===================== */
+
+@media (max-width: 1024px) {
+  .fv-overlay {
+    padding: 60px 40px;
+  }
+
+  .fv-title {
+    font-size: 48px;
+  }
+
+  .fv-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* =====================
+   レスポンシブ：スマートフォン
+===================== */
+
+@media (max-width: 768px) {
+  .fv-overlay {
+    padding: 40px 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  .fv-title {
+    font-size: 32px;
+  }
+
+  .fv-subtitle {
+    font-size: 14px;
+  }
+}
