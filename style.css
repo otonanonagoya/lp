@@ -469,42 +469,6 @@ body {
   .image-wrap, .text { width: 80%; max-width: 720px; margin: 40px auto 0; }
   .data-grid { grid-template-columns: repeat(4, 1fr); }
 }
-@media (max-width: 768px) {
-  .grid-item {
-    aspect-ratio: 3 / 4;
-  }
-
-  /* 配置リセット */
-  .item1,
-  .item2,
-  .item3,
-  .item4,
-  .item5,
-  .item6,
-  .item7 {
-    grid-column: auto;
-    grid-row: auto;
-  }
-    /* 配置リセット */
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-
-  .grid-item {
-    height: 220px;
-  }
-
-  /* 配置指定を無効化 */
-  .item1,
-  .item2,
-  .item3,
-  .item4,
-  .item5,
-  .item6,
-  .item7 {
-    grid-column: auto;
-    grid-row: auto;
-  }
-}
 
 /* =====================
    フルスクリーン背景
