@@ -705,7 +705,7 @@ body {
   filter: brightness(0.85) contrast(1.1);
 }
 /* =====================
-   フルスクリーン背景コンテナ
+   フルスクリーン背景
 ===================== */
 
 .fv-fullscreen {
@@ -732,6 +732,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;  /* 初期状態：非表示 */
+  z-index: 1;
 }
 
 .fv-bg img {
@@ -742,7 +744,7 @@ body {
 }
 
 /* =====================
-   フラッシュアニメーション（各背景に順次実行）
+   フラッシュアニメーション
 ===================== */
 
 @keyframes flashIn {
@@ -759,64 +761,42 @@ body {
   }
 }
 
-/* 背景1 */
-.fv-bg-1 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.0s forwards;
-}
-
-/* 背景2 */
-.fv-bg-2 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
-}
-
-/* 背景3 */
-.fv-bg-3 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.4s forwards;
-}
-
-/* 背景4 */
-.fv-bg-4 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.6s forwards;
-}
-
-/* 背景5 */
-.fv-bg-5 img {
-  animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 4.8s forwards;
-}
-
-/* =====================
-   背景フェードアウト（各背景）
-===================== */
-
 @keyframes fadeOut {
   0% {
     opacity: 1;
+    filter: brightness(0.75) contrast(1.05);
   }
   100% {
     opacity: 0;
+    filter: brightness(0.75) contrast(1.05);
   }
 }
 
+/* 背景1（0.0秒開始） */
 .fv-bg-1 img {
   animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.0s forwards,
             fadeOut 0.8s ease-in 5.8s forwards;
 }
 
+/* 背景2（1.2秒開始） */
 .fv-bg-2 img {
   animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards,
             fadeOut 0.8s ease-in 5.8s forwards;
 }
 
+/* 背景3（2.4秒開始） */
 .fv-bg-3 img {
   animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.4s forwards,
             fadeOut 0.8s ease-in 5.8s forwards;
 }
 
+/* 背景4（3.6秒開始） */
 .fv-bg-4 img {
   animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.6s forwards,
             fadeOut 0.8s ease-in 5.8s forwards;
 }
 
+/* 背景5（4.8秒開始） */
 .fv-bg-5 img {
   animation: flashIn 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 4.8s forwards,
             fadeOut 0.8s ease-in 5.8s forwards;
@@ -889,7 +869,7 @@ body {
 }
 
 /* =====================
-   レスポンシブ：タブレット
+   レスポンシブ
 ===================== */
 
 @media (max-width: 1024px) {
@@ -905,10 +885,6 @@ body {
     font-size: 16px;
   }
 }
-
-/* =====================
-   レスポンシブ：スマートフォン
-===================== */
 
 @media (max-width: 768px) {
   .fv-overlay {
