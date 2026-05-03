@@ -511,14 +511,14 @@ body {
 @keyframes flashIn {
   0% {
     opacity: 0;
-    filter: brightness(0.3) blur(10px);
+    /*filter: brightness(0.3) blur(10px);*/
   }
   40% {
-    filter: brightness(1.2);
+    /*filter: brightness(1.2);*/
   }
   100% {
     opacity: 1;
-    filter: brightness(0.75) contrast(1.05);
+    /*filter: brightness(0.75) contrast(1.05);*/
   }
 }
 
@@ -526,12 +526,12 @@ body {
   0% {
     opacity: 0;
     transform: scale(1.08);
-    filter: brightness(1.4) blur(6px);
+    /*filter: brightness(1.4) blur(6px);*/
   }
   40% {
     opacity: 1;
     transform: scale(1);
-    filter: brightness(1.1) blur(0);
+    /*filter: brightness(1.1) blur(0);*/
   }
   80% {
     opacity: 1;
@@ -557,12 +557,12 @@ body {
   0% {
     opacity: 0;
     transform: scale(1.05);
-    filter: brightness(1.4) blur(6px);
+    /*filter: brightness(1.4) blur(6px);*/
   }
   10% {
     opacity: 1;
     transform: scale(1);
-    filter: brightness(1.05) blur(0);
+    /*filter: brightness(1.05) blur(0);*/
   }
   25% {
     opacity: 1;
