@@ -782,7 +782,9 @@ body {
 .fv-lead {
   margin-top: 24px;
 }
-
+.fv-bg-1 {
+  opacity: 1;
+}
 .fv-bg-1,
 .fv-bg-2,
 .fv-bg-3,
