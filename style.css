@@ -501,7 +501,7 @@ body {
   object-fit: cover;
 
   /* ここを調整 */
-  filter: brightness(0.9) contrast(1.05);
+  /*filter: brightness(0.9) contrast(1.05);*/
 }
 
 /* =====================
