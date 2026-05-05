@@ -22,17 +22,7 @@ export default async function handler(req, res) {
       `,
     });
 
-    // 自動返信
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: email,
-      subject: 'お問い合わせありがとうございます',
-      html: `
-        <p>${name} 様</p>
-        <p>この度はお問い合わせありがとうございます。</p>
-        <p>担当よりご連絡いたします。</p>
-      `,
-    });
+    
 
     return res.status(200).json({ success: true });
 
