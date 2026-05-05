@@ -51,6 +51,8 @@ targets.forEach(el => observer.observe(el));
 // =====================
 const form = document.getElementById("contactForm");
 
+let isSubmitting = false;
+
 if (form) {
   const button = form.querySelector("button");
 
@@ -62,34 +64,43 @@ if (form) {
       return;
     }
 
+    if (isSubmitting) return;
+    isSubmitting = true;
+
     button.disabled = true;
     button.innerText = "送信しています…";
+    button.style.opacity = "0.7";
 
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-    };
+    const data = new FormData(form);
 
     try {
-      const res = await fetch("/api/send", {
+      const response = await fetch("https://formspree.io/f/mpqbzpop", {
         method: "POST",
+        body: data,
         headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+          'Accept': 'application/json'
+        }
       });
 
-      if (res.ok) {
-        window.location.href = "/thanks.html";
+      if (response.ok) {
+        console.log("送信成功");
+
+        form.reset();
+        button.innerText = "送信完了しました";
+
+        setTimeout(() => {
+          window.location.href = "https://otonanonagoya.github.io/lp/thanks.html";
+        }, 500);
       } else {
         throw new Error();
       }
 
     } catch (error) {
+      isSubmitting = false;
       button.disabled = false;
       button.innerText = "掲載について相談する";
-      alert("送信に失敗しました");
+      button.style.opacity = "1";
+      alert("送信に失敗しました。");
     }
   });
 }
