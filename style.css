@@ -695,7 +695,7 @@ body {
 
 .fv-subtitle {
   font-size: 18px;
-  color: #d4af37;
+  color: rgba(212,175,55,0.7);
   line-height: 1.6;
   letter-spacing: 0.05em;
   max-width: 600px;
@@ -809,14 +809,14 @@ body {
   inset: 0;
   opacity: 0;
   transform: scale(1.08);
-  transition: opacity 2.5s ease, transform 6s ease;
+  transition: opacity 4s ease, transform 20s ease;
 }
 
 .fv-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.65) contrast(1.1);
+  filter: brightness(0.6) contrast(1.05);
 }
 
 /* 表示中 */
@@ -842,16 +842,16 @@ body {
 .fv-content {
   position: relative;
   z-index: 2;
-  max-width: 900px;
-  padding: 80px;
+  max-width: 700px;
+  padding: 120px;
   color: #fff;
 }
 
 /* タイトル */
 .fv-title {
   font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.5;
-  letter-spacing: 0.05em;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
   opacity: 0;
   transform: translateY(20px);
 }
@@ -895,6 +895,6 @@ body {
   position: absolute;
   inset: 0;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
+  opacity: 0.08;
   z-index: 1;
 }
