@@ -45,18 +45,46 @@ const observer = new IntersectionObserver((entries) => {
 
 targets.forEach(el => observer.observe(el));
 
-// フェードイン + ズームアウト
-window.addEventListener("load", () => {
+const form = document.getElementById("contactForm");
 
-  items.forEach((img, i) => {
-    img.style.opacity = 0;
-    img.style.transform = "scale(1.2)";
+let isSubmitting = false;
 
-    setTimeout(() => {
-      img.style.transition = "all 1.2s ease";
-      img.style.opacity = 1;
-      img.style.transform = "scale(1.05)";
-    }, i * 120);
+if (form) {
+  const button = form.querySelector("button");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    button.disabled = true;
+    button.innerText = "送信しています…";
+    button.style.opacity = "0.7";
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mpqbzpop", {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        window.location.href = "https://otonanonagoya.github.io/lp/thanks.html";
+      } else {
+        throw new Error();
+      }
+
+    } catch (error) {
+      isSubmitting = false;
+      button.disabled = false;
+      button.innerText = "掲載について相談する";
+      button.style.opacity = "1";
+      alert("送信に失敗しました。");
+    }
   });
-
-});
+}
