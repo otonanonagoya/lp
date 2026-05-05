@@ -104,3 +104,38 @@ if (form) {
     }
   });
 }
+// =====================
+// FV スライド（高級ゆっくり）
+// =====================
+
+const slides = document.querySelectorAll(".fv-bg");
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    if (i === index) slide.classList.add("active");
+  });
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+// 初期表示
+showSlide(0);
+
+// 8秒ごと（←重要：ゆっくりが高級）
+setInterval(nextSlide, 8000);
+
+// =====================
+// FV テキスト演出
+// =====================
+
+window.addEventListener("load", () => {
+  const fv = document.querySelector(".fv");
+  setTimeout(() => {
+    fv.classList.add("show");
+  }, 400);
+});
