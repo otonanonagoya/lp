@@ -45,6 +45,10 @@ const observer = new IntersectionObserver((entries) => {
 
 targets.forEach(el => observer.observe(el));
 
+
+// =====================
+// コンタクトフォーム
+// =====================
 const form = document.getElementById("contactForm");
 
 let isSubmitting = false;
