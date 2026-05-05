@@ -989,3 +989,19 @@ body {
   z-index: 2;
   background: #000;
 }
+.fv {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.fv-scroll {
+  min-height: 200vh;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  position: relative;
+  z-index: 2;
+}
