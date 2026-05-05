@@ -768,9 +768,9 @@ body {
 .fv-lead {
   margin-top: 20px;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 2;
   color: rgba(255,255,255,0.85);
-  max-width: 520px;
+  max-width: 420px;
 
   /* ほんのり視認性補助 */
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
