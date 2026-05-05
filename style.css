@@ -635,6 +635,30 @@ body {
   animation-delay: 8s;
 }
 
+.fv-bg-6 {
+  animation: flashLoop 10s infinite;
+  animation-delay: 10s;
+}
+
+.fv-bg-7 {
+  animation: flashLoop 10s infinite;
+  animation-delay: 12s;
+}
+
+.fv-bg-8 {
+  animation: flashLoop 10s infinite;
+  animation-delay: 14s;
+}
+
+.fv-bg-9 {
+  animation: flashLoop 10s infinite;
+  animation-delay: 16s;
+}
+
+.fv-bg-10 {
+  animation: flashLoop 10s infinite;
+  animation-delay: 18s;
+}
 /* =====================
    テキストオーバーレイ
 ===================== */
