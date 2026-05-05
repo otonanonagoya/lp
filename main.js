@@ -126,8 +126,8 @@ function nextSlide() {
 // 初期表示
 showSlide(0);
 
-// 8秒ごと（←重要：ゆっくりが高級）
-setInterval(nextSlide, 8000);
+// 重要：ゆっくりが高級
+setInterval(nextSlide, 14000);
 
 // =====================
 // FV テキスト演出
