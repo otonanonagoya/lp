@@ -55,6 +55,11 @@ if (form) {
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     if (isSubmitting) return;
     isSubmitting = true;
 
@@ -74,7 +79,14 @@ if (form) {
       });
 
       if (response.ok) {
-        window.location.href = "https://otonanonagoya.github.io/lp/thanks.html";
+        console.log("送信成功");
+
+        form.reset();
+        button.innerText = "送信完了しました";
+
+        setTimeout(() => {
+          window.location.href = "https://otonanonagoya.github.io/lp/thanks.html";
+        }, 500);
       } else {
         throw new Error();
       }
