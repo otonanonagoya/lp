@@ -146,3 +146,11 @@ window.addEventListener("scroll", () => {
     img.style.transform = `translateY(${y * 0.03}px) scale(1.05)`;
   });
 });
+// FVテキスト出現
+const fv = document.querySelector('.fv-content');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    fv.classList.add('show');
+  }
+});
