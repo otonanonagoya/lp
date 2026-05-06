@@ -139,16 +139,13 @@ window.addEventListener("load", () => {
     fv.classList.add("show");
   }, 400);
 });
-
 // FVテキスト出現
 const fv = document.querySelector('.fv-content');
-
 window.addEventListener('scroll', () => {
   if (window.scrollY > 100) {
     fv.classList.add('show');
   }
 });
-
 window.addEventListener("load", () => {
   document.querySelector(".fv-content").classList.add("show");
 });
