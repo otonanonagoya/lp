@@ -594,17 +594,40 @@ body {
   inset: 0;
 }
 
+/* 初期状態 */
 .fv-bg {
   position: absolute;
   inset: 0;
-  opacity: 1;
+  opacity: 0;
 }
 
+/* 画像 */
 .fv-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* アニメーション */
+@keyframes fvSlide {
+  0%   { opacity: 0; transform: scale(1.08); }
+  10%  { opacity: 1; transform: scale(1); }
+  30%  { opacity: 1; }
+  40%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 各画像に時間差 */
+.fv-bg-1 { animation: fvSlide 30s infinite; }
+.fv-bg-2 { animation: fvSlide 30s infinite 3s; }
+.fv-bg-3 { animation: fvSlide 30s infinite 6s; }
+.fv-bg-4 { animation: fvSlide 30s infinite 9s; }
+.fv-bg-5 { animation: fvSlide 30s infinite 12s; }
+.fv-bg-6 { animation: fvSlide 30s infinite 15s; }
+.fv-bg-7 { animation: fvSlide 30s infinite 18s; }
+.fv-bg-8 { animation: fvSlide 30s infinite 21s; }
+.fv-bg-9 { animation: fvSlide 30s infinite 24s; }
+.fv-bg-10{ animation: fvSlide 30s infinite 27s; }
 
 /* =====================
    FV テキスト（スクロール）
