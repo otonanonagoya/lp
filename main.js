@@ -154,3 +154,7 @@ window.addEventListener('scroll', () => {
     fv.classList.add('show');
   }
 });
+
+window.addEventListener("load", () => {
+  document.querySelector(".fv-content").classList.add("show");
+});
