@@ -691,3 +691,74 @@ body {
   object-fit: cover;
   transform: none;
 }
+
+/* =====================
+   FV中央配置
+===================== */
+.fv-scroll {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* コンテンツ */
+.fv-content {
+  text-align: center;
+}
+
+/* =====================
+   タイトル
+===================== */
+.fv-title {
+  font-size: 32px;
+  line-height: 1.6;
+  transition: 0.8s ease;
+}
+
+/* =====================
+   サブコピー（少し遅れて出る）
+===================== */
+.fv-subtitle {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #ccc;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s ease 0.4s;
+}
+
+/* =====================
+   リード（スクロールで出る）
+===================== */
+.fv-lead {
+  margin-top: 48px; /* ← タイトルとしっかり距離 */
+  font-size: 14px;
+  line-height: 2;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+/* =====================
+   初期表示（load後）
+===================== */
+.fv-content.show .fv-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   スクロール後
+===================== */
+.fv-content.scrolled .fv-title {
+  transform: translateY(-20px);
+}
+
+.fv-content.scrolled .fv-lead {
+  opacity: 1;
+  transform: translateY(0);
+}
