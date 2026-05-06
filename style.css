@@ -608,6 +608,10 @@ body {
   object-fit: cover;
 }
 
+.fv-bg img {
+  filter: brightness(0.6) contrast(1.05);
+}
+
 /* アニメーション */
 @keyframes fvSlide {
   0%   { opacity: 0; transform: scale(1.08); }
