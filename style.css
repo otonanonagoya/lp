@@ -597,7 +597,7 @@ body {
 .fv-bg {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  opacity: 1;
 }
 
 .fv-bg img {
