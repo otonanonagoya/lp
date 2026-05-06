@@ -673,3 +673,6 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+.fv-bg img {
+  transform: none !important;
+}
