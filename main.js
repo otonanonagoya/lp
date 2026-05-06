@@ -139,13 +139,7 @@ window.addEventListener("load", () => {
     fv.classList.add("show");
   }, 400);
 });
-window.addEventListener("scroll", () => {
-  const y = window.scrollY;
 
-  document.querySelectorAll(".fv-bg img").forEach(img => {
-    img.style.transform = `translateY(${y * 0.03}px) scale(1.05)`;
-  });
-});
 // FVテキスト出現
 const fv = document.querySelector('.fv-content');
 
