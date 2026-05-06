@@ -639,16 +639,18 @@ body {
 .fv-scroll {
   position: relative;
   z-index: 1;
-  min-height: 200svh; /* ←スクロール量 */
+  min-height: 100svh; /* ←ここ重要（200vhやめる） */
   display: flex;
-  align-items: center;
-  padding: 120px 20px;
+  align-items: center;     /* ←縦中央 */
+  justify-content: center; /* ←横中央（不要なら消してOK） */
+  padding: 40px 20px;
 }
 
 /* ←これが本体 */
 .fv-content {
   max-width: 700px;
-  margin-left: 10%;
+  margin: 0;           /* ←左寄せ解除 */
+  text-align: center;  /* ←中央寄せ */
   color: #fff;
 
   opacity: 1; /* ←ここ重要（今0になってる） */
