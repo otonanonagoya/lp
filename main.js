@@ -149,3 +149,19 @@ window.addEventListener('scroll', () => {
 window.addEventListener("load", () => {
   document.querySelector(".fv-content").classList.add("show");
 });
+
+const fvContent = document.querySelector('.fv-content');
+
+/* 初期表示（サブコピー出す） */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    fvContent.classList.add("show");
+  }, 300);
+});
+
+/* スクロールでリード表示 */
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    fvContent.classList.add('scrolled');
+  }
+});
