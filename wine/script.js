@@ -15,14 +15,3 @@ const observer = new IntersectionObserver((entries)=>{
 fadeElements.forEach((el)=>{
   observer.observe(el);
 });
-
-
-const sceneTrack = document.querySelector('.scene-track');
-
-window.addEventListener('scroll', ()=>{
-
-  const scrollY = window.scrollY;
-
-  sceneTrack.style.transform = `translateX(${-scrollY * 0.08}px)`;
-
-});
