@@ -133,7 +133,6 @@ a{
 .fv-content{
   position:relative;
   z-index:2;
-  max-width:720px;
   padding:
   clamp(120px, 18vh, 220px)
   7vw
@@ -149,10 +148,10 @@ a{
 }
 
 .fv-title{
-  font-size:clamp(46px, 8vw, 78px);
-  line-height:1.18;
-  letter-spacing:-0.04em;
-  max-width:7.5em;
+  font-size:clamp(52px, 9vw, 110px);
+  line-height:1.08;
+  letter-spacing:-0.05em;
+  max-width:none;
   margin-bottom:36px;
 }
 
