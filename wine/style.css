@@ -21,6 +21,8 @@ html{
 }
 
 body{
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
   background:var(--bg);
   color:var(--text);
   font-family:'Noto Serif JP', serif;
@@ -535,4 +537,13 @@ a{
     font-size:14px;
   }
 
+}
+
+.section-title,
+.manifesto-title,
+.participation-title,
+.cta h2,
+.fv-title{
+
+  text-wrap:balance;
 }
