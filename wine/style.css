@@ -559,12 +559,23 @@ a{
   margin-top:64px;
 }
 
-.tags span{
-  border:1px solid var(--line);
-  padding:16px 22px;
+.participation-tags span{
+
+  padding:16px 28px;
+
+  border:1px solid rgba(255,255,255,0.08);
+
   border-radius:999px;
-  color:var(--muted);
-  font-size:14px;
+
+  font-size:15px;
+
+  letter-spacing:0.04em;
+
+  color:#d8d0c7;
+
+  background:rgba(255,255,255,0.01);
+
+  backdrop-filter:blur(4px);
 }
 
 /* Creative */
