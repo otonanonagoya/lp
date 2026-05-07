@@ -199,22 +199,38 @@ a{
   overflow:hidden;
 }
 
-.scene-track{
-  display:flex;
-  gap:24px;
-  padding-left:6vw;
+.scene-grid{
+  width:min(1400px, calc(100% - 40px));
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
 }
 
-.scene-card{
-  min-width:28vw;
-  height:70vh;
+.scene-item{
   overflow:hidden;
+  background:#111;
 }
 
-.scene-card img{
+.scene-item img{
   width:100%;
   height:100%;
   object-fit:cover;
+  aspect-ratio:4/5;
+  transition:1.2s ease;
+}
+
+.scene-item.wide{
+  grid-column:span 2;
+}
+
+.scene-item.wide img{
+  aspect-ratio:16/8;
+}
+
+.scene-item:hover img{
+  transform:scale(1.03);
 }
 
 .scene-words{
