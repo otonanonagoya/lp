@@ -138,10 +138,10 @@ a{
 }
 
 .fv-title{
-  font-size:clamp(42px, 8vw, 110px);
-  line-height:1.15;
-  font-weight:300;
-  margin-bottom:40px;
+  font-size: clamp(52px, 9vw, 88px);
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  max-width: 8.5em;
 }
 
 .fv-line{
