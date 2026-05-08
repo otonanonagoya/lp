@@ -447,7 +447,8 @@
 
   </section>
 
-  <script src="script.js"></script>
+ <script src="script.js"></script>
+
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -456,32 +457,55 @@
 
 <script>
 
-const isMobile = window.innerWidth <= 768;
-
 $('#magazine').turn({
 
-  width: isMobile
-    ? window.innerWidth * 0.94
-    : Math.min(1180, window.innerWidth * 0.92),
+  width:
+    window.innerWidth <= 768
+      ? window.innerWidth * 0.96
+      : Math.min(1400, window.innerWidth * 0.94),
 
-  height: isMobile
-    ? window.innerWidth * 1.32
-    : Math.min(760, window.innerWidth * 0.62),
+  height:
+    window.innerWidth <= 768
+      ? window.innerWidth * 1.42
+      : Math.min(860, window.innerWidth * 0.68),
 
   autoCenter:true,
 
-  display:isMobile ? 'single' : 'double',
+  display:'double',
 
   gradients:true,
 
   acceleration:true,
 
-  elevation:120,
+  elevation:180,
 
   duration:1400
 
 });
 
+/* =========================
+   Long Edge Page Turn
+========================= */
+
+const leftHit =
+  document.querySelector('.page-hit.left');
+
+const rightHit =
+  document.querySelector('.page-hit.right');
+
+leftHit.addEventListener('click',()=>{
+
+  $('#magazine').turn('previous');
+
+});
+
+rightHit.addEventListener('click',()=>{
+
+  $('#magazine').turn('next');
+
+});
+
 </script>
+
 </body>
 </html>
