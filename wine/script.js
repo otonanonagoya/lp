@@ -54,10 +54,7 @@ prevBtn.addEventListener("click",()=>{
   updateArchive();
 });
 updateArchive();
-height: isMobile
-  ? window.innerWidth * 1.42
-  : Math.min(860, window.innerWidth * 0.68),
-  
+
   /* =========================
    Long Edge Page Turn
 ========================= */
