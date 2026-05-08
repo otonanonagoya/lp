@@ -15,45 +15,6 @@ const observer = new IntersectionObserver((entries)=>{
 fadeElements.forEach((el)=>{
   observer.observe(el);
 });
-/* =========================
-   Archive Viewer
-========================= */
-
-const pages = document.querySelectorAll(".archive-page");
-
-const prevBtn = document.querySelector(".archive-nav.prev");
-
-const nextBtn = document.querySelector(".archive-nav.next");
-
-const counter = document.querySelector(".archive-count");
-
-let current = 0;
-
-function updateArchive(){
-  pages.forEach((page,index)=>{
-    page.classList.toggle(
-      "active",
-      index === current
-    );
-  });
-  counter.textContent =
-    `${String(current + 1).padStart(2,"0")} / ${String(pages.length).padStart(2,"0")}`;
-}
-nextBtn.addEventListener("click",()=>{
-  current++;
-  if(current >= pages.length){
-    current = 0;
-  }
-  updateArchive();
-});
-prevBtn.addEventListener("click",()=>{
-  current--;
-  if(current < 0){
-    current = pages.length - 1;
-  }
-  updateArchive();
-});
-updateArchive();
 
   /* =========================
    Long Edge Page Turn
@@ -74,5 +35,3 @@ rightHit.addEventListener('click',()=>{
   $('#magazine').turn('next');
 
 });
-
-display:'double',
