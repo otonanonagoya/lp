@@ -619,29 +619,40 @@ a{
 
 .archive-nav{
 
-  width:64px;
-  height:64px;
+  width:72px;
+  height:72px;
 
-  border:none;
+  border:1px solid rgba(255,255,255,.12);
 
-  background:rgba(255,255,255,.04);
+  border-radius:999px;
 
-  color:rgba(255,255,255,.8);
+  background:rgba(10,10,10,.72);
 
-  backdrop-filter:blur(10px);
+  color:#F5F1EA;
+
+  font-size:24px;
+
+  backdrop-filter:blur(16px);
 
   cursor:pointer;
 
   transition:.4s ease;
 
-  z-index:10;
+  z-index:20;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.45);
 }
 
 .archive-nav:hover{
 
-  background:rgba(255,255,255,.1);
+  background:rgba(214,162,94,.14);
+
+  border-color:rgba(214,162,94,.4);
 
   transform:translateY(-2px);
+
+  color:#fff;
 }
 
 .archive-nav.prev{
@@ -650,6 +661,16 @@ a{
 
 .archive-nav.next{
   margin-left:32px;
+}
+.archive-nav span{
+
+  display:block;
+
+  transform:translateY(-1px);
+}
+.archive-pages{
+
+  border:1px solid rgba(255,255,255,.06);
 }
 
 /* meta */
