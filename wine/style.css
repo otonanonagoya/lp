@@ -850,13 +850,17 @@ a{
   opacity:1;
 }
 .page{
+  position:relative;
 
   background:#111;
+
+  overflow:hidden;
 
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,.03),
     0 10px 40px rgba(0,0,0,.45);
 }
+
 .turn-page{
   backface-visibility:hidden;
 }
