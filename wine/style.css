@@ -594,7 +594,10 @@ a{
 .cover img{
   filter:brightness(.92);
 }
-
+.cover{
+  box-shadow:
+    inset -12px 0 20px rgba(255,255,255,.03);
+}
 /* 中央綴じ */
 
 #magazine::after{
