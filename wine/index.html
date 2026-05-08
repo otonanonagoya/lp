@@ -457,31 +457,59 @@
 
 <script>
 
-$('#magazine').turn({
+document.addEventListener('DOMContentLoaded', () => {
 
-  width:
-    window.innerWidth <= 768
-      ? window.innerWidth * 0.96
-      : Math.min(1400, window.innerWidth * 0.94),
+  $('#magazine').turn({
 
-  height:
-    window.innerWidth <= 768
-      ? window.innerWidth * 1.42
-      : Math.min(860, window.innerWidth * 0.68),
+    width:
+      window.innerWidth <= 768
+        ? window.innerWidth * 0.96
+        : Math.min(1400, window.innerWidth * 0.94),
 
-  autoCenter:true,
+    height:
+      window.innerWidth <= 768
+        ? window.innerWidth * 1.42
+        : Math.min(860, window.innerWidth * 0.68),
 
-  display:'double',
+    autoCenter:true,
 
-  gradients:true,
+    display:'double',
 
-  acceleration:true,
+    gradients:true,
 
-  elevation:180,
+    acceleration:true,
 
-  duration:1400
+    elevation:180,
+
+    duration:1400
+
+  });
+
+  /* =========================
+     Long Edge Page Turn
+  ========================= */
+
+  const leftHit =
+    document.querySelector('.page-hit.left');
+
+  const rightHit =
+    document.querySelector('.page-hit.right');
+
+  leftHit.addEventListener('click',()=>{
+
+    $('#magazine').turn('previous');
+
+  });
+
+  rightHit.addEventListener('click',()=>{
+
+    $('#magazine').turn('next');
+
+  });
 
 });
+
+</script>
 
 /* =========================
    Long Edge Page Turn
