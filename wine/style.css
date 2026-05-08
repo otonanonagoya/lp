@@ -860,3 +860,25 @@ a{
 .turn-page{
   backface-visibility:hidden;
 }
+
+.cover{
+  background:#111;
+  box-shadow:
+    inset -18px 0 30px rgba(255,255,255,.04),
+    0 20px 60px rgba(0,0,0,.5);
+}
+
+.page::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:12px;
+  height:100%;
+  background:
+  linear-gradient(
+    to left,
+    rgba(255,255,255,.06),
+    transparent
+  );
+}
