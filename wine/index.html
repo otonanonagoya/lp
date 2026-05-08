@@ -443,6 +443,40 @@
   </section>
 
   <script src="script.js"></script>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<!-- turn.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+
+<script>
+
+const isMobile = window.innerWidth <= 768;
+
+$('#magazine').turn({
+
+  width: isMobile
+    ? window.innerWidth * 0.94
+    : Math.min(1180, window.innerWidth * 0.92),
+
+  height: isMobile
+    ? window.innerWidth * 1.32
+    : Math.min(760, window.innerWidth * 0.62),
+
+  autoCenter:true,
+
+  display:isMobile ? 'single' : 'double',
+
+  gradients:true,
+
+  acceleration:true,
+
+  elevation:120,
+
+  duration:1400
+
+});
+
+</script>
 </body>
 </html>
