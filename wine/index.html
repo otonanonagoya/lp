@@ -227,58 +227,72 @@
       実際にめくる。
     </h2>
 
-<div class="book-wrap fade-up">
+    <div class="book-wrap fade-up">
 
-  <div id="magazine">
+      <!-- Prev -->
+      <button class="archive-nav prev" aria-label="Previous Page">
+        <span>←</span>
+      </button>
 
-  <!-- 初期見開き -->
-  <div class="page cover">
-    <img src="images/archive1.webp" alt="">
+      <!-- Magazine -->
+      <div id="magazine">
+
+        <!-- 1 -->
+        <div class="page">
+          <img src="images/archive1.webp" alt="">
+        </div>
+
+        <div class="page">
+          <img src="images/archive10.webp" alt="">
+        </div>
+
+        <!-- 2 -->
+        <div class="page">
+          <img src="images/archive3.webp" alt="">
+        </div>
+
+        <div class="page">
+          <img src="images/archive2.webp" alt="">
+        </div>
+
+        <!-- 3 -->
+        <div class="page">
+          <img src="images/archive5.webp" alt="">
+        </div>
+
+        <div class="page">
+          <img src="images/archive4.webp" alt="">
+        </div>
+
+        <!-- 4 -->
+        <div class="page">
+          <img src="images/archive7.webp" alt="">
+        </div>
+
+        <div class="page">
+          <img src="images/archive6.webp" alt="">
+        </div>
+
+        <!-- 5 -->
+        <div class="page">
+          <img src="images/archive9.webp" alt="">
+        </div>
+
+        <div class="page">
+          <img src="images/archive8.webp" alt="">
+        </div>
+
+      </div>
+
+      <!-- Next -->
+      <button class="archive-nav next" aria-label="Next Page">
+        <span>→</span>
+      </button>
+
+    </div>
+
   </div>
 
-  <div class="page cover">
-    <img src="images/archive10.webp" alt="">
-  </div>
-
-  <!-- 2見開き目 -->
-  <div class="page">
-    <img src="images/archive3.webp" alt="">
-  </div>
-
-  <div class="page">
-    <img src="images/archive2.webp" alt="">
-  </div>
-
-  <!-- 3見開き目 -->
-  <div class="page">
-    <img src="images/archive5.webp" alt="">
-  </div>
-
-  <div class="page">
-    <img src="images/archive4.webp" alt="">
-  </div>
-
-  <!-- 4見開き目 -->
-  <div class="page">
-    <img src="images/archive7.webp" alt="">
-  </div>
-
-  <div class="page">
-    <img src="images/archive6.webp" alt="">
-  </div>
-
-  <!-- 5見開き目 -->
-  <div class="page">
-    <img src="images/archive9.webp" alt="">
-  </div>
-
-  <div class="page">
-    <img src="images/archive8.webp" alt="">
-  </div>
-
-</div>
-
-</div>
 </section>
 
   <!-- Participation -->
@@ -446,54 +460,14 @@
 
   </section>
 
- <script src="script.js"></script>
-
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- turn.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 
-
-/* =========================
-   Long Edge Page Turn
-========================= */
-
-const leftHit =
-  document.querySelector('.page-hit.left');
-
-const rightHit =
-  document.querySelector('.page-hit.right');
-
-leftHit.addEventListener('click',()=>{
-
-  $('#magazine').turn('previous');
-
-});
-
-rightHit.addEventListener('click',()=>{
-
-  $('#magazine').turn('next');
-
-});
-<div class="book-wrap fade-up">
-
-  <button class="archive-nav prev">
-    <span>←</span>
-  </button>
-
-  <div id="magazine">
-
-    <!-- pages -->
-
-  </div>
-
-  <button class="archive-nav next">
-    <span>→</span>
-  </button>
-
-</div>
-</script>
+<!-- script.js -->
+<script src="script.js"></script>
 
 </body>
 </html>
