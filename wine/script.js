@@ -1,5 +1,3 @@
-// script.js
-
 /* =========================
    Fade Up Animation
 ========================= */
@@ -10,14 +8,14 @@ const observer = new IntersectionObserver((entries) => {
 
   entries.forEach((entry) => {
 
-    if(entry.isIntersecting){
+    if (entry.isIntersecting) {
       entry.target.classList.add('show');
     }
 
   });
 
-},{
-  threshold:0.15
+}, {
+  threshold: 0.15
 });
 
 fadeElements.forEach((el) => {
@@ -33,7 +31,7 @@ $(function () {
 
   // responsive size
   const bookWidth =
-    Math.min(window.innerWidth * 0.82, 1000);
+    Math.min(window.innerWidth * 0.92, 900);
 
   const pageWidth = bookWidth / 2;
 
@@ -78,56 +76,51 @@ $(function () {
     document.querySelector('.archive-nav.next');
 
 
-  /* =========================
-     Navigation Visibility
-  ========================= */
+  // =========================
+  // navigation visibility
+  // =========================
 
   function updateNav() {
 
-    const currentPage =
-      $('#magazine').turn('page');
+  const currentPage =
+    $('#magazine').turn('page');
 
-    const totalPages =
-      $('#magazine').turn('pages');
-
-
-    // prev
-    if(currentPage <= 2){
-
-      prevBtn.classList.add('hidden');
-
-    }else{
-
-      prevBtn.classList.remove('hidden');
-
-    }
+  const totalPages =
+    $('#magazine').turn('pages');
 
 
-    // next
-    if(currentPage >= totalPages - 1){
+  // prev
+  if (currentPage <= 2) {
 
-      nextBtn.classList.add('hidden');
+    prevBtn.classList.add('hidden');
 
-    }else{
+  } else {
 
-      nextBtn.classList.remove('hidden');
-
-    }
+    prevBtn.classList.remove('hidden');
 
   }
 
 
+  // next
+  if (currentPage >= totalPages - 2) {
+
+    nextBtn.classList.add('hidden');
+
+  } else {
+
+    nextBtn.classList.remove('hidden');
+
+  }
+
+}
+
   // 初期状態
   updateNav();
 
-
-  /* =========================
-     Previous
-  ========================= */
-
+  // previous
   prevBtn.addEventListener('click', () => {
 
-    if($('#magazine').turn('page') > 2){
+    if ($('#magazine').turn('page') > 2) {
 
       $('#magazine').turn('previous');
 
@@ -136,24 +129,10 @@ $(function () {
   });
 
 
-  /* =========================
-     Next
-  ========================= */
-
+  // next
   nextBtn.addEventListener('click', () => {
 
     $('#magazine').turn('next');
-
-  });
-
-
-  /* =========================
-     Resize
-  ========================= */
-
-  window.addEventListener('resize', () => {
-
-    location.reload();
 
   });
 
