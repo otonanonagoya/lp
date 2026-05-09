@@ -33,7 +33,7 @@ $(function () {
 
   // responsive size
   const bookWidth =
-    Math.min(window.innerWidth * 0.9, 1000);
+    Math.min(window.innerWidth * 0.82, 1000);
 
   const pageWidth = bookWidth / 2;
 
@@ -104,7 +104,7 @@ $(function () {
 
 
     // next
-    if(currentPage >= totalPages - 2){
+    if(currentPage >= totalPages - 1){
 
       nextBtn.classList.add('hidden');
 
@@ -143,6 +143,17 @@ $(function () {
   nextBtn.addEventListener('click', () => {
 
     $('#magazine').turn('next');
+
+  });
+
+
+  /* =========================
+     Resize
+  ========================= */
+
+  window.addEventListener('resize', () => {
+
+    location.reload();
 
   });
 
