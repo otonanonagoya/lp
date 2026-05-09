@@ -628,6 +628,10 @@ a{
   pointer-events:none;
 }
 
+.blank{
+  background:transparent !important;
+  box-shadow:none !important;
+}
 /* ページ影 */
 
 .turn-page{
