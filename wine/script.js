@@ -1,3 +1,5 @@
+// script.js
+
 /* =========================
    Fade Up Animation
 ========================= */
@@ -8,14 +10,14 @@ const observer = new IntersectionObserver((entries) => {
 
   entries.forEach((entry) => {
 
-    if (entry.isIntersecting) {
+    if(entry.isIntersecting){
       entry.target.classList.add('show');
     }
 
   });
 
-}, {
-  threshold: 0.15
+},{
+  threshold:0.15
 });
 
 fadeElements.forEach((el) => {
@@ -29,33 +31,14 @@ fadeElements.forEach((el) => {
 
 $(function () {
 
-  const prevBtn = document.querySelector('.archive-nav.prev');
-  const nextBtn = document.querySelector('.archive-nav.next');
-
-  // =========================
-  // Responsive Size
-  // =========================
-
-  let bookWidth;
-
-  if (window.innerWidth <= 768) {
-
-    bookWidth = window.innerWidth * 0.92;
-
-  } else {
-
-    bookWidth = Math.min(window.innerWidth * 0.82, 1200);
-
-  }
+  // responsive size
+  const bookWidth =
+    Math.min(window.innerWidth * 0.9, 1000);
 
   const pageWidth = bookWidth / 2;
 
   const bookHeight = pageWidth * 1.42;
 
-
-  // =========================
-  // turn.js
-  // =========================
 
   $('#magazine').turn({
 
@@ -88,9 +71,16 @@ $(function () {
   });
 
 
-  // =========================
-  // Navigation Visibility
-  // =========================
+  const prevBtn =
+    document.querySelector('.archive-nav.prev');
+
+  const nextBtn =
+    document.querySelector('.archive-nav.next');
+
+
+  /* =========================
+     Navigation Visibility
+  ========================= */
 
   function updateNav() {
 
@@ -101,24 +91,24 @@ $(function () {
       $('#magazine').turn('pages');
 
 
-    // 初期見開きでは ← 非表示
-    if (currentPage <= 2) {
+    // prev
+    if(currentPage <= 2){
 
       prevBtn.classList.add('hidden');
 
-    } else {
+    }else{
 
       prevBtn.classList.remove('hidden');
 
     }
 
 
-    // 最終見開きでは → 非表示
-    if (currentPage >= totalPages - 1) {
+    // next
+    if(currentPage >= totalPages - 2){
 
       nextBtn.classList.add('hidden');
 
-    } else {
+    }else{
 
       nextBtn.classList.remove('hidden');
 
@@ -131,16 +121,13 @@ $(function () {
   updateNav();
 
 
-  // =========================
-  // Prev
-  // =========================
+  /* =========================
+     Previous
+  ========================= */
 
   prevBtn.addEventListener('click', () => {
 
-    const currentPage =
-      $('#magazine').turn('page');
-
-    if (currentPage > 2) {
+    if($('#magazine').turn('page') > 2){
 
       $('#magazine').turn('previous');
 
@@ -149,23 +136,13 @@ $(function () {
   });
 
 
-  // =========================
-  // Next
-  // =========================
+  /* =========================
+     Next
+  ========================= */
 
   nextBtn.addEventListener('click', () => {
 
-    const currentPage =
-      $('#magazine').turn('page');
-
-    const totalPages =
-      $('#magazine').turn('pages');
-
-    if (currentPage < totalPages - 1) {
-
-      $('#magazine').turn('next');
-
-    }
+    $('#magazine').turn('next');
 
   });
 
