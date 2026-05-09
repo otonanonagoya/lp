@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <title>Autumn Wine Issue 2026 | 大人の名古屋</title>
 
@@ -16,11 +16,11 @@
 
 <body>
 
-  <!-- 質感を司るオーバーレイ -->
+  <!-- 質感を司るオーバーレイ（pointer-events: noneを徹底） -->
   <div class="grain"></div>
   <div class="ambient-light"></div>
 
-  <!-- FV: 第一印象を決定づける光の空間 -->
+  <!-- FV -->
   <section class="fv">
     <div class="fv-grid">
       <div class="fv-item large"><img src="images/fv1.webp" alt=""></div>
@@ -55,7 +55,7 @@
     </div>
   </section>
 
-  <!-- Manifesto: 思考を促す静寂のセクション -->
+  <!-- Manifesto -->
   <section class="manifesto section">
     <div class="container">
       <p class="section-en">Manifesto</p>
@@ -84,7 +84,7 @@
     </div>
   </section>
 
-  <!-- Scene: 視覚体験のギャラリー -->
+  <!-- Scene -->
   <section class="scene section">
     <div class="scene-grid">
       <div class="scene-item fade-up"><img src="images/fv1.webp" alt=""></div>
@@ -95,15 +95,17 @@
       <div class="scene-item fade-up"><img src="images/fv6.webp" alt=""></div>
     </div>
     <div class="scene-words">
-      <span>HARVEST</span>
-      <span>PAIRING</span>
-      <span>AFTERGLOW</span>
-      <span>TERROIR</span>
-      <span>CONVERSATION</span>
+      <div class="words-inner">
+        <span>HARVEST</span>
+        <span>PAIRING</span>
+        <span>AFTERGLOW</span>
+        <span>TERROIR</span>
+        <span>CONVERSATION</span>
+      </div>
     </div>
   </section>
 
-  <!-- Last Year: 実績の証明 -->
+  <!-- Last Year -->
   <section class="lastyear section">
     <div class="container">
       <p class="section-en">Last Year</p>
@@ -128,7 +130,7 @@
     </div>
   </section>
 
-  <!-- Archive Book: 触知可能なメディア体験 -->
+  <!-- Archive Book -->
   <section class="archive-book section">
     <div class="container">
       <p class="section-en">Last Autumn Issue</p>
@@ -153,14 +155,14 @@
         </div>
 
         <div class="archive-controls">
-          <button class="archive-nav prev" aria-label="Previous Page"><span>←</span></button>
-          <button class="archive-nav next" aria-label="Next Page"><span>→</span></button>
+          <button class="archive-nav prev" id="prev-btn" aria-label="Previous Page"><span>←</span></button>
+          <button class="archive-nav next" id="next-btn" aria-label="Next Page"><span>→</span></button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Participation: ターゲットの提示 -->
+  <!-- Participation -->
   <section class="participation section">
     <div class="container narrow">
       <p class="section-en">Participation</p>
@@ -175,7 +177,7 @@
     </div>
   </section>
 
-  <!-- Creative: プロフェッショナリズム -->
+  <!-- Creative -->
   <section class="creative section">
     <div class="container">
       <p class="section-en">Creative Direction</p>
@@ -194,7 +196,7 @@
     </div>
   </section>
 
-  <!-- Vision: 共鳴の創出 -->
+  <!-- Vision -->
   <section class="vision section">
     <div class="container narrow">
       <p class="section-en">Vision</p>
@@ -216,7 +218,7 @@
     </div>
   </section>
 
-  <!-- Information: 信頼の情報 -->
+  <!-- Information -->
   <section class="info section">
     <div class="container">
       <p class="section-en">Information</p>
@@ -230,7 +232,7 @@
     </div>
   </section>
 
-  <!-- CTA: 招待状の送付 -->
+  <!-- CTA -->
   <section class="cta">
     <div class="cta-overlay"></div>
     <img src="images/fv10.webp" alt="" class="cta-bg">
