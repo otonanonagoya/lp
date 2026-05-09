@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     width:
       window.innerWidth <= 768
-        ? window.innerWidth * 0.96
-        : Math.min(1400, window.innerWidth * 0.94),
+        ? window.innerWidth * 0.94
+        : Math.min(1400, window.innerWidth * 0.92),
 
     height:
       window.innerWidth <= 768
-        ? window.innerWidth * 1.42
-        : Math.min(860, window.innerWidth * 0.68),
+        ? window.innerWidth * 1.32
+        : Math.min(860, window.innerWidth * 0.62),
 
     autoCenter:true,
 
@@ -57,28 +57,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* =========================
-     Long Edge Page Turn
+     Arrow Navigation
   ========================= */
 
-  const leftHit =
-    document.querySelector('.page-hit.left');
+  const prevBtn =
+    document.querySelector('.archive-nav.prev');
 
-  const rightHit =
-    document.querySelector('.page-hit.right');
+  const nextBtn =
+    document.querySelector('.archive-nav.next');
 
 
-  // 左クリック → 次ページ
-  leftHit.addEventListener('click', () => {
+  // 左矢印 → 前ページ
+  prevBtn.addEventListener('click', () => {
+
+    $('#magazine').turn('previous');
+
+  });
+
+
+  // 右矢印 → 次ページ
+  nextBtn.addEventListener('click', () => {
 
     $('#magazine').turn('next');
 
   });
 
 
-  // 右クリック → 前ページ
-  rightHit.addEventListener('click', () => {
+  /* =========================
+     Keyboard Navigation
+  ========================= */
 
-    $('#magazine').turn('previous');
+  document.addEventListener('keydown', (e) => {
+
+    if(e.key === 'ArrowLeft'){
+
+      $('#magazine').turn('previous');
+
+    }
+
+    if(e.key === 'ArrowRight'){
+
+      $('#magazine').turn('next');
+
+    }
 
   });
 
@@ -93,12 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'size',
 
       window.innerWidth <= 768
-        ? window.innerWidth * 0.96
-        : Math.min(1400, window.innerWidth * 0.94),
+        ? window.innerWidth * 0.94
+        : Math.min(1400, window.innerWidth * 0.92),
 
       window.innerWidth <= 768
-        ? window.innerWidth * 1.42
-        : Math.min(860, window.innerWidth * 0.68)
+        ? window.innerWidth * 1.32
+        : Math.min(860, window.innerWidth * 0.62)
 
     );
 
