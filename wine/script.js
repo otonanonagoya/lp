@@ -1,4 +1,4 @@
-/* =========================
+ /* =========================
    Fade Up Animation
 ========================= */
 
@@ -79,5 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#magazine').turn('next');
 
   });
+
+});
+const prevBtn = document.querySelector('.archive-nav.prev');
+
+const nextBtn = document.querySelector('.archive-nav.next');
+
+prevBtn.addEventListener('click', () => {
+
+  if($('#magazine').turn('page') > 2){
+    $('#magazine').turn('previous');
+  }
+
+});
+
+nextBtn.addEventListener('click', () => {
+
+  $('#magazine').turn('next');
 
 });
