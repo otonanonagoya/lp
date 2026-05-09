@@ -150,8 +150,8 @@ a{
 }
 
 .fv-title{
-  width:85vw;
-  font-size:11vw;
+  width:min(85vw, 1200px);
+  font-size:clamp(56px, 11vw, 170px);
   line-height:1.08;
   letter-spacing:-0.06em;
   font-weight:300;
@@ -309,19 +309,21 @@ a{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:20px;
+  gap:24px;
   margin-top:80px;
   overflow:hidden;
 }
 
 #magazine{
   position:relative;
+  max-width:100%;
   filter:drop-shadow(0 50px 100px rgba(0,0,0,.55));
 }
 
 .page{
   background:#111;
   overflow:hidden;
+
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,.03),
     0 10px 40px rgba(0,0,0,.45);
@@ -335,8 +337,8 @@ a{
 }
 
 .page.dummy{
-  background:transparent;
-  box-shadow:none;
+  background:transparent !important;
+  box-shadow:none !important;
 }
 
 .archive-nav{
@@ -367,6 +369,8 @@ a{
   opacity:1;
 
   flex-shrink:0;
+
+  z-index:20;
 }
 
 .archive-nav:hover{
