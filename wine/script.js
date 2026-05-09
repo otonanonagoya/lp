@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     height:
       window.innerWidth <= 768
-        ? window.innerWidth * 1.34
+        ? window.innerWidth * 1.48
         : Math.min(860, window.innerWidth * 0.62),
 
     autoCenter: true,
