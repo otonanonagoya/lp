@@ -1,37 +1,89 @@
 // script.js
 
+/* =========================
+   Fade Up Animation
+========================= */
+
 const fadeElements = document.querySelectorAll('.fade-up');
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach((entry)=>{
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
     if(entry.isIntersecting){
       entry.target.classList.add('show');
     }
+
   });
+
 },{
   threshold:0.15
 });
 
-fadeElements.forEach((el)=>{
+fadeElements.forEach((el) => {
   observer.observe(el);
 });
 
-  /* =========================
-   Long Edge Page Turn
+
+/* =========================
+   Magazine Init
 ========================= */
 
-const leftHit = document.querySelector('.page-hit.left');
+document.addEventListener('DOMContentLoaded', () => {
 
-const rightHit = document.querySelector('.page-hit.right');
+  $('#magazine').turn({
 
-leftHit.addEventListener('click',()=>{
+    width:
+      window.innerWidth <= 768
+        ? window.innerWidth * 0.96
+        : Math.min(1400, window.innerWidth * 0.94),
 
-  $('#magazine').turn('previous');
-direction:'rtl',
-});
+    height:
+      window.innerWidth <= 768
+        ? window.innerWidth * 1.42
+        : Math.min(860, window.innerWidth * 0.68),
 
-rightHit.addEventListener('click',()=>{
+    autoCenter:true,
 
-  $('#magazine').turn('next');
+    display:'double',
+
+    direction:'rtl',
+
+    gradients:true,
+
+    acceleration:true,
+
+    elevation:180,
+
+    duration:1400
+
+  });
+
+
+  /* =========================
+     Long Edge Page Turn
+  ========================= */
+
+  const leftHit =
+    document.querySelector('.page-hit.left');
+
+  const rightHit =
+    document.querySelector('.page-hit.right');
+
+
+  // 左側クリック → 次ページ
+  leftHit.addEventListener('click', () => {
+
+    $('#magazine').turn('next');
+
+  });
+
+
+  // 右側クリック → 前ページ
+  rightHit.addEventListener('click', () => {
+
+    $('#magazine').turn('previous');
+
+  });
 
 });
