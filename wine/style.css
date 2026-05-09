@@ -837,3 +837,40 @@ a{
 .page.dummy {
   background: transparent;
 }
+/* =========================
+   Magazine Responsive
+========================= */
+
+.book-wrap {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  overflow: hidden;
+
+}
+
+#magazine {
+
+  max-width: 100%;
+
+}
+
+#magazine .page img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+}
