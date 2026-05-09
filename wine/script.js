@@ -82,42 +82,48 @@ $(function () {
 
   function updateNav() {
 
-    const currentPage =
-      $('#magazine').turn('page');
+  const currentPage =
+    $('#magazine').turn('page');
 
-    const totalPages =
-      $('#magazine').turn('pages');
-
-
-    // 初期見開き
-    if (currentPage <= 2) {
-
-      prevBtn.classList.add('hidden');
-
-    } else {
-
-      prevBtn.classList.remove('hidden');
-
-    }
+  const totalPages =
+    $('#magazine').turn('pages');
 
 
-    // 最終見開き
-    if (currentPage >= totalPages - 1) {
+  // =========================
+  // Prev
+  // =========================
 
-      nextBtn.classList.add('hidden');
+  if (currentPage <= 2) {
 
-    } else {
+    prevBtn.classList.add('hidden');
 
-      nextBtn.classList.remove('hidden');
+  } else {
 
-    }
+    prevBtn.classList.remove('hidden');
 
   }
 
 
-  // 初期状態
-  updateNav();
+  // =========================
+  // Next
+  // =========================
 
+  // 最終見開き判定
+  if (currentPage >= totalPages - 2) {
+
+    nextBtn.classList.add('hidden');
+
+  } else {
+
+    nextBtn.classList.remove('hidden');
+
+  }
+
+}
+
+
+  /*// 初期状態
+  updateNav();*/
 
   // previous
   prevBtn.addEventListener('click', () => {
