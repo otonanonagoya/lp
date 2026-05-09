@@ -817,3 +817,14 @@ a{
     transparent
   );
 }
+.book-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+}
+
+.archive-nav{
+  flex-shrink:0;
+}
