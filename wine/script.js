@@ -27,7 +27,7 @@ const rightHit = document.querySelector('.page-hit.right');
 leftHit.addEventListener('click',()=>{
 
   $('#magazine').turn('previous');
-
+direction:'rtl',
 });
 
 rightHit.addEventListener('click',()=>{
