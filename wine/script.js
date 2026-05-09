@@ -1,5 +1,3 @@
-// script.js
-
 /* =========================
    Fade Up Animation
 ========================= */
@@ -47,8 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     display:'double',
 
-    direction:'rtl',
-
     gradients:true,
 
     acceleration:true,
@@ -71,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.page-hit.right');
 
 
-  // 左側クリック → 次ページ
+  // 左クリック → 次ページ
   leftHit.addEventListener('click', () => {
 
     $('#magazine').turn('next');
@@ -79,10 +75,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // 右側クリック → 前ページ
+  // 右クリック → 前ページ
   rightHit.addEventListener('click', () => {
 
     $('#magazine').turn('previous');
+
+  });
+
+
+  /* =========================
+     Responsive Resize
+  ========================= */
+
+  window.addEventListener('resize', () => {
+
+    $('#magazine').turn(
+      'size',
+
+      window.innerWidth <= 768
+        ? window.innerWidth * 0.96
+        : Math.min(1400, window.innerWidth * 0.94),
+
+      window.innerWidth <= 768
+        ? window.innerWidth * 1.42
+        : Math.min(860, window.innerWidth * 0.68)
+
+    );
 
   });
 
