@@ -29,14 +29,33 @@ fadeElements.forEach((el) => {
 
 $(function () {
 
-  // responsive size
-  const bookWidth =
-    Math.min(window.innerWidth * 0.92, 900);
+  const prevBtn = document.querySelector('.archive-nav.prev');
+  const nextBtn = document.querySelector('.archive-nav.next');
+
+  // =========================
+  // Responsive Size
+  // =========================
+
+  let bookWidth;
+
+  if (window.innerWidth <= 768) {
+
+    bookWidth = window.innerWidth * 0.92;
+
+  } else {
+
+    bookWidth = Math.min(window.innerWidth * 0.82, 1200);
+
+  }
 
   const pageWidth = bookWidth / 2;
 
   const bookHeight = pageWidth * 1.42;
 
+
+  // =========================
+  // turn.js
+  // =========================
 
   $('#magazine').turn({
 
@@ -69,58 +88,59 @@ $(function () {
   });
 
 
-  const prevBtn =
-    document.querySelector('.archive-nav.prev');
-
-  const nextBtn =
-    document.querySelector('.archive-nav.next');
-
-
   // =========================
-  // navigation visibility
+  // Navigation Visibility
   // =========================
 
   function updateNav() {
 
-  const currentPage =
-    $('#magazine').turn('page');
+    const currentPage =
+      $('#magazine').turn('page');
 
-  const totalPages =
-    $('#magazine').turn('pages');
+    const totalPages =
+      $('#magazine').turn('pages');
 
 
-  // prev
-  if (currentPage <= 2) {
+    // 初期見開きでは ← 非表示
+    if (currentPage <= 2) {
 
-    prevBtn.classList.add('hidden');
+      prevBtn.classList.add('hidden');
 
-  } else {
+    } else {
 
-    prevBtn.classList.remove('hidden');
+      prevBtn.classList.remove('hidden');
+
+    }
+
+
+    // 最終見開きでは → 非表示
+    if (currentPage >= totalPages - 1) {
+
+      nextBtn.classList.add('hidden');
+
+    } else {
+
+      nextBtn.classList.remove('hidden');
+
+    }
 
   }
 
-
-  // next
-  if (currentPage >= totalPages - 2) {
-
-    nextBtn.classList.add('hidden');
-
-  } else {
-
-    nextBtn.classList.remove('hidden');
-
-  }
-
-}
 
   // 初期状態
   updateNav();
 
-  // previous
+
+  // =========================
+  // Prev
+  // =========================
+
   prevBtn.addEventListener('click', () => {
 
-    if ($('#magazine').turn('page') > 2) {
+    const currentPage =
+      $('#magazine').turn('page');
+
+    if (currentPage > 2) {
 
       $('#magazine').turn('previous');
 
@@ -129,10 +149,23 @@ $(function () {
   });
 
 
-  // next
+  // =========================
+  // Next
+  // =========================
+
   nextBtn.addEventListener('click', () => {
 
-    $('#magazine').turn('next');
+    const currentPage =
+      $('#magazine').turn('page');
+
+    const totalPages =
+      $('#magazine').turn('pages');
+
+    if (currentPage < totalPages - 1) {
+
+      $('#magazine').turn('next');
+
+    }
 
   });
 
