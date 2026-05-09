@@ -233,50 +233,52 @@
 
   <div id="magazine">
 
-    <!-- 表紙 -->
-    <div class="page cover">
-      <img src="images/archive10.webp" alt="">
-    </div>
-
-    <!-- 中面 -->
-    <div class="page">
-      <img src="images/archive1.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive2.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive3.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive4.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive5.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive6.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive7.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive8.webp" alt="">
-    </div>
-
-    <div class="page">
-      <img src="images/archive9.webp" alt="">
-    </div>
-
+  <!-- 初期見開き -->
+  <div class="page">
+    <img src="images/archive1.webp" alt="">
   </div>
 
+  <div class="page cover">
+    <img src="images/archive10.webp" alt="">
+  </div>
+
+  <!-- 2見開き目 -->
+  <div class="page">
+    <img src="images/archive3.webp" alt="">
+  </div>
+
+  <div class="page">
+    <img src="images/archive2.webp" alt="">
+  </div>
+
+  <!-- 3見開き目 -->
+  <div class="page">
+    <img src="images/archive5.webp" alt="">
+  </div>
+
+  <div class="page">
+    <img src="images/archive4.webp" alt="">
+  </div>
+
+  <!-- 4見開き目 -->
+  <div class="page">
+    <img src="images/archive7.webp" alt="">
+  </div>
+
+  <div class="page">
+    <img src="images/archive6.webp" alt="">
+  </div>
+
+  <!-- 5見開き目 -->
+  <div class="page">
+    <img src="images/archive9.webp" alt="">
+  </div>
+
+  <div class="page">
+    <img src="images/archive8.webp" alt="">
+  </div>
+
+</div>
   <button class="page-hit right"></button>
 
 </div>
@@ -475,6 +477,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     display:'double',
 
+    direction:'rtl',
+
     gradients:true,
 
     acceleration:true,
@@ -497,13 +501,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   leftHit.addEventListener('click',()=>{
 
-    $('#magazine').turn('previous');
+    $('#magazine').turn('next');
 
   });
 
   rightHit.addEventListener('click',()=>{
 
-    $('#magazine').turn('next');
+    $('#magazine').turn('previous');
 
   });
 
