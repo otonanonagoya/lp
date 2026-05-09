@@ -1,19 +1,5 @@
 /* =========================
-   Variables
-========================= */
-:root {
-  --bg: #080808;
-  --bg-sub: #0D0D0D;
-  --text: #F8F5F0;
-  --muted: #A09B93;
-  --line: rgba(255, 255, 255, 0.05);
-  --gold: #C5A070;
-  --wine: #4A121A;
-  --easing: cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* =========================
-   Base Rules (横スクロールを徹底排除)
+   Reset & Base
 ========================= */
 * {
   margin: 0;
@@ -21,61 +7,49 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #080808;
+  --bg-sub: #0D0D0D;
+  --text: #F8F5F0;
+  --muted: #A09B93;
+  --gold: #C5A070;
+  --easing: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 html, body {
   width: 100%;
-  overflow-x: hidden; /* HTML/BODY両方でガード */
-  position: relative;
+  min-height: 100%;
   background-color: var(--bg);
-}
-
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   color: var(--text);
   font-family: 'Noto Serif JP', serif;
-  line-height: 1.8;
+  overflow-x: hidden; /* 横スクロールの絶対禁止 */
+  -webkit-text-size-adjust: 100%;
 }
 
-img {
-  width: 100%;
-  display: block;
-}
-
-/* 質感を司るオーバーレイ */
-.grain {
+/* 質感レイヤー：操作を邪魔しない */
+.grain, .ambient-light {
   position: fixed;
   inset: 0;
-  pointer-events: none; /* クリックを透過させる */
-  opacity: 0.04;
-  z-index: 10;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 9999;
 }
-
-.ambient-light {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* クリックを透過させる */
-  z-index: 11;
-  background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%);
-}
+.grain { opacity: 0.04; background-image: url("https://grainy-gradients.vercel.app/noise.svg"); mix-blend-mode: overlay; }
+.ambient-light { background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%); }
 
 /* =========================
    Layout
 ========================= */
 .section {
-  padding: clamp(160px, 20vh, 240px) 0;
+  width: 100%;
+  padding: 120px 0;
   position: relative;
-  overflow: hidden; /* セクション単位でもはみ出しを禁止 */
+  overflow: hidden;
 }
 
 .container {
-  width: min(1200px, calc(100% - 60px));
-  margin: auto;
-}
-
-.container.narrow {
-  width: min(820px, calc(100% - 60px));
+  width: min(100%, 1200px);
+  padding: 0 30px;
+  margin: 0 auto;
 }
 
 .section-en {
@@ -83,195 +57,158 @@ img {
   font-size: 13px;
   letter-spacing: 0.4em;
   color: var(--gold);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-transform: uppercase;
-  display: block;
 }
 
 .section-title {
-  font-size: clamp(32px, 4.5vw, 54px);
-  line-height: 1.4;
-  letter-spacing: -0.02em;
+  font-size: clamp(28px, 5vw, 48px);
   font-weight: 300;
-  margin-bottom: 64px;
+  line-height: 1.4;
+  margin-bottom: 50px;
 }
 
 /* =========================
-   FV
+   FV: 崩れ防止
 ========================= */
 .fv {
-  min-height: 100svh;
+  height: 100svh;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .fv-grid {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 1px;
+  z-index: 1;
 }
 
-.fv-item { overflow: hidden; background: var(--bg); }
+.fv-bg-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.fv-item { overflow: hidden; position: relative; }
 .fv-item img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(0.4) grayscale(0.2);
-  transform: scale(1.1);
-  transition: transform 10s var(--easing);
+  filter: brightness(0.4);
 }
 
 .fv-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(8,8,8,0.2), rgba(8,8,8,0.95));
+  z-index: 2;
+  background: linear-gradient(to bottom, transparent, var(--bg));
 }
 
-.fv-content { position: relative; z-index: 5; padding-left: 8vw; }
-.fv-title { font-size: clamp(48px, 10vw, 100px); font-weight: 200; line-height: 1.1; margin-bottom: 48px; }
-
-.scroll-indicator { position: absolute; right: 40px; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: var(--muted); }
-.scroll-line { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--gold), transparent); }
-
-/* =========================
-   Manifesto
-========================= */
-.manifesto-title { font-size: clamp(38px, 6vw, 68px); font-weight: 300; line-height: 1.3; margin-bottom: 80px; }
-.manifesto-body p { font-size: 18px; color: var(--muted); margin-bottom: 56px; }
-
-/* =========================
-   Scene (横スクロールの主な原因を修正)
-========================= */
-.scene-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.scene-item img { aspect-ratio: 1 / 1.2; object-fit: cover; transition: 1.5s var(--easing); }
-.scene-item.wide { grid-column: span 2; }
-.scene-item.wide img { aspect-ratio: 16 / 9; }
-
-.scene-words {
-  width: 100%;
-  overflow: hidden; /* ここで完全ガード */
-  margin-top: 80px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.words-inner {
-  display: flex;
-  gap: 40px;
-  padding: 40px 0;
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(40px, 8vw, 120px);
-  color: rgba(255, 255, 255, 0.03);
-  white-space: nowrap;
+.fv-content {
+  position: relative;
+  z-index: 3;
+  padding-left: 10%;
 }
 
 /* =========================
-   Archive Book (操作性の修正)
+   Archive Book: 徹底修正
 ========================= */
 .archive-book {
-  background-color: var(--bg-sub);
+  background: var(--bg-sub);
 }
 
-.book-wrap {
+/* はみ出しを防ぐためのビューポート */
+.book-viewport {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
-  width: 100%;
-}
-
-#magazine {
   position: relative;
-  margin: 0 auto;
-  cursor: pointer;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
 }
 
+.book-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  perspective: 2000px; /* 3D感を出す */
+}
+
+/* Turn.js本体 */
+#magazine {
+  margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+.page {
+  background: #222;
+  overflow: hidden;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* 操作ボタン：最前面へ */
 .archive-controls {
   display: flex;
-  gap: 40px;
+  gap: 30px;
+  margin-top: 50px;
   position: relative;
-  z-index: 100; /* 最前面へ */
+  z-index: 1000; /* 全てを上回る */
 }
 
 .archive-nav {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-  pointer-events: auto !important; /* 強制的に反応させる */
+  transition: all 0.3s var(--easing);
+  pointer-events: auto !important; /* 強制有効 */
 }
 
 .archive-nav:hover {
   background: var(--gold);
   border-color: var(--gold);
-  color: var(--bg);
+  transform: translateY(-5px);
 }
 
 .archive-nav.hidden {
-  opacity: 0;
+  opacity: 0.1;
   pointer-events: none;
 }
 
 /* =========================
-   Info
+   Other Sections
 ========================= */
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.info-card { padding: 40px; border: 1px solid var(--line); background: rgba(255,255,255,0.01); }
-.info-card span { color: var(--gold); font-size: 12px; letter-spacing: 0.2em; display: block; margin-bottom: 20px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.info-card { padding: 40px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); }
 
-/* =========================
-   CTA
-========================= */
-.cta { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; }
-.cta-bg { position: absolute; inset: 0; object-fit: cover; filter: brightness(0.2); }
-.cta-content { position: relative; z-index: 5; text-align: center; }
+.cta { padding: 150px 0; text-align: center; background: var(--bg); }
 .cta-button {
   display: inline-block;
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 20px 60px;
   border: 1px solid var(--gold);
   color: var(--gold);
-  transition: 0.4s;
-}
-.cta-button:hover { background: var(--gold); color: var(--bg); }
-
-/* =========================
-   Animations
-========================= */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1.2s var(--easing);
-}
-.fade-up.show {
-  opacity: 1;
-  transform: none;
+  text-decoration: none;
 }
 
-/* =========================
-   Responsive
-========================= */
+/* Animation */
+.fade-up { opacity: 0; transform: translateY(30px); transition: 1s var(--easing); }
+.fade-up.show { opacity: 1; transform: none; }
+
 @media (max-width: 768px) {
-  .section { padding: 100px 0; }
-  .info-grid { grid-template-columns: 1fr; }
-  .fv-grid { grid-template-columns: repeat(2, 1fr); }
-  .scene-grid { grid-template-columns: 1fr; }
-  .scene-item.wide { grid-column: span 1; }
+  .section { padding: 80px 0; }
+  .fv-content { padding-left: 30px; }
   .archive-nav { width: 60px; height: 60px; }
 }
