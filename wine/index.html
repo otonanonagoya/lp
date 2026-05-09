@@ -16,10 +16,11 @@
 
 <body>
 
-  <!-- 粒状テクスチャエフェクト -->
+  <!-- 質感を司るオーバーレイ -->
   <div class="grain"></div>
+  <div class="ambient-light"></div>
 
-  <!-- FV (First View) -->
+  <!-- FV: 第一印象を決定づける光の空間 -->
   <section class="fv">
     <div class="fv-grid">
       <div class="fv-item large"><img src="images/fv1.webp" alt=""></div>
@@ -48,10 +49,13 @@
       </p>
     </div>
 
-    <div class="scroll-indicator">SCROLL</div>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
-  <!-- Manifesto -->
+  <!-- Manifesto: 思考を促す静寂のセクション -->
   <section class="manifesto section">
     <div class="container">
       <p class="section-en">Manifesto</p>
@@ -80,15 +84,15 @@
     </div>
   </section>
 
-  <!-- Scene -->
+  <!-- Scene: 視覚体験のギャラリー -->
   <section class="scene section">
     <div class="scene-grid">
-      <div class="scene-item"><img src="images/fv1.webp" alt=""></div>
-      <div class="scene-item"><img src="images/fv2.webp" alt=""></div>
-      <div class="scene-item"><img src="images/fv3.webp" alt=""></div>
-      <div class="scene-item wide"><img src="images/fv4.webp" alt=""></div>
-      <div class="scene-item"><img src="images/fv5.webp" alt=""></div>
-      <div class="scene-item"><img src="images/fv6.webp" alt=""></div>
+      <div class="scene-item fade-up"><img src="images/fv1.webp" alt=""></div>
+      <div class="scene-item fade-up"><img src="images/fv2.webp" alt=""></div>
+      <div class="scene-item fade-up"><img src="images/fv3.webp" alt=""></div>
+      <div class="scene-item wide fade-up"><img src="images/fv4.webp" alt=""></div>
+      <div class="scene-item fade-up"><img src="images/fv5.webp" alt=""></div>
+      <div class="scene-item fade-up"><img src="images/fv6.webp" alt=""></div>
     </div>
     <div class="scene-words">
       <span>HARVEST</span>
@@ -99,7 +103,7 @@
     </div>
   </section>
 
-  <!-- Last Year -->
+  <!-- Last Year: 実績の証明 -->
   <section class="lastyear section">
     <div class="container">
       <p class="section-en">Last Year</p>
@@ -124,7 +128,7 @@
     </div>
   </section>
 
-  <!-- Archive Book (修正箇所) -->
+  <!-- Archive Book: 触知可能なメディア体験 -->
   <section class="archive-book section">
     <div class="container">
       <p class="section-en">Last Autumn Issue</p>
@@ -134,7 +138,6 @@
       </h2>
 
       <div class="book-wrap fade-up">
-        <!-- Magazine 本体 -->
         <div id="magazine">
           <div class="page dummy"></div>
           <div class="page"><img src="images/archive1.webp" alt=""></div>
@@ -149,7 +152,6 @@
           <div class="page"><img src="images/archive8.webp" alt=""></div>
         </div>
 
-        <!-- 修正：ナビゲーションを誌面の下に配置するためのコンテナ -->
         <div class="archive-controls">
           <button class="archive-nav prev" aria-label="Previous Page"><span>←</span></button>
           <button class="archive-nav next" aria-label="Next Page"><span>→</span></button>
@@ -158,7 +160,7 @@
     </div>
   </section>
 
-  <!-- Participation -->
+  <!-- Participation: ターゲットの提示 -->
   <section class="participation section">
     <div class="container narrow">
       <p class="section-en">Participation</p>
@@ -173,7 +175,7 @@
     </div>
   </section>
 
-  <!-- Creative -->
+  <!-- Creative: プロフェッショナリズム -->
   <section class="creative section">
     <div class="container">
       <p class="section-en">Creative Direction</p>
@@ -192,7 +194,7 @@
     </div>
   </section>
 
-  <!-- Vision -->
+  <!-- Vision: 共鳴の創出 -->
   <section class="vision section">
     <div class="container narrow">
       <p class="section-en">Vision</p>
@@ -214,7 +216,7 @@
     </div>
   </section>
 
-  <!-- Information -->
+  <!-- Information: 信頼の情報 -->
   <section class="info section">
     <div class="container">
       <p class="section-en">Information</p>
@@ -228,7 +230,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA: 招待状の送付 -->
   <section class="cta">
     <div class="cta-overlay"></div>
     <img src="images/fv10.webp" alt="" class="cta-bg">
@@ -242,7 +244,7 @@
     </div>
   </section>
 
-  <!-- Libraries -->
+  <!-- jQuery & Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
   <script src="script.js"></script>
