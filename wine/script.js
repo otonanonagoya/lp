@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     display: 'double',
 
+    page: 2,
+
     direction: 'ltr',
 
     gradients: true,
@@ -67,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector('.archive-nav.next');
 
 
-  // 左ボタン → 前ページ
   prevBtn.addEventListener('click', () => {
 
     $('#magazine').turn('previous');
@@ -75,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // 右ボタン → 次ページ
   nextBtn.addEventListener('click', () => {
 
     $('#magazine').turn('next');
