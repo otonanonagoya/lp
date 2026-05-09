@@ -27,36 +27,42 @@ fadeElements.forEach((el) => {
    Magazine
 ========================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+$(function () {
 
   $('#magazine').turn({
 
-  width:
-    window.innerWidth <= 768
-      ? window.innerWidth * 0.94
-      : Math.min(1400, window.innerWidth * 0.92),
+    width: 800,
+    height: 560,
 
-  height:
-    window.innerWidth <= 768
-      ? window.innerWidth * 1.48
-      : Math.min(860, window.innerWidth * 0.62),
+    autoCenter: true,
 
-  autoCenter: true,
+    display: 'double',
 
-  display: 'double',
+    elevation: 50,
 
-  direction: 'ltr',
+    gradients: true,
 
-  gradients: true,
+    duration: 1200,
 
-  acceleration: true,
+    page: 2
 
-  elevation: 180,
+  });
 
-  duration: 1200
+  // next
+  $('.archive-nav.next').on('click', function () {
+
+    $('#magazine').turn('next');
+
+  });
+
+  // prev
+  $('.archive-nav.prev').on('click', function () {
+
+    $('#magazine').turn('previous');
+
+  });
 
 });
-
 
   /* =========================
      Navigation
