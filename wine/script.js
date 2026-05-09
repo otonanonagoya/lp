@@ -122,8 +122,8 @@ $(function () {
 }
 
 
-  /*// 初期状態
-  updateNav();*/
+  // 初期状態
+  updateNav();
 
   // previous
   prevBtn.addEventListener('click', () => {
