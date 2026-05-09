@@ -24,7 +24,7 @@ fadeElements.forEach((el) => {
 
 
 /* =========================
-   Magazine Init
+   Magazine
 ========================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,36 +38,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     height:
       window.innerWidth <= 768
-        ? window.innerWidth * 1.32
+        ? window.innerWidth * 1.34
         : Math.min(860, window.innerWidth * 0.62),
 
-    autoCenter:true,
+    autoCenter: true,
 
-    display:'double',
+    display: 'double',
 
-    gradients:true,
+    direction: 'ltr',
 
-    acceleration:true,
+    gradients: true,
 
-    elevation:180,
+    acceleration: true,
 
-    duration:1400
+    elevation: 180,
+
+    duration: 1200
 
   });
 
 
   /* =========================
-     Arrow Navigation
+     Navigation
   ========================= */
 
-  const prevBtn =
-    document.querySelector('.archive-nav.prev');
+  const prevBtn = document.querySelector('.archive-nav.prev');
 
-  const nextBtn =
-    document.querySelector('.archive-nav.next');
+  const nextBtn = document.querySelector('.archive-nav.next');
 
 
-  // 左矢印 → 前ページ
+  // 左ボタン → 前ページ
   prevBtn.addEventListener('click', () => {
 
     $('#magazine').turn('previous');
@@ -75,53 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // 右矢印 → 次ページ
+  // 右ボタン → 次ページ
   nextBtn.addEventListener('click', () => {
 
     $('#magazine').turn('next');
-
-  });
-
-
-  /* =========================
-     Keyboard Navigation
-  ========================= */
-
-  document.addEventListener('keydown', (e) => {
-
-    if(e.key === 'ArrowLeft'){
-
-      $('#magazine').turn('previous');
-
-    }
-
-    if(e.key === 'ArrowRight'){
-
-      $('#magazine').turn('next');
-
-    }
-
-  });
-
-
-  /* =========================
-     Responsive Resize
-  ========================= */
-
-  window.addEventListener('resize', () => {
-
-    $('#magazine').turn(
-      'size',
-
-      window.innerWidth <= 768
-        ? window.innerWidth * 0.94
-        : Math.min(1400, window.innerWidth * 0.92),
-
-      window.innerWidth <= 768
-        ? window.innerWidth * 1.32
-        : Math.min(860, window.innerWidth * 0.62)
-
-    );
 
   });
 
