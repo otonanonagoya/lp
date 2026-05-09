@@ -834,3 +834,6 @@ a{
 .archive-nav{
   flex-shrink:0;
 }
+.page.dummy {
+  background: transparent;
+}
