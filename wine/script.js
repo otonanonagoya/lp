@@ -31,33 +31,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('#magazine').turn({
 
-    width:
-      window.innerWidth <= 768
-        ? window.innerWidth * 0.94
-        : Math.min(1400, window.innerWidth * 0.92),
+  width:
+    window.innerWidth <= 768
+      ? window.innerWidth * 0.94
+      : Math.min(1400, window.innerWidth * 0.92),
 
-    height:
-      window.innerWidth <= 768
-        ? window.innerWidth * 1.48
-        : Math.min(860, window.innerWidth * 0.62),
+  height:
+    window.innerWidth <= 768
+      ? window.innerWidth * 1.48
+      : Math.min(860, window.innerWidth * 0.62),
 
-    autoCenter: true,
+  autoCenter: true,
 
-    display: 'double',
+  display: 'double',
 
-    page: 2,
+  direction: 'ltr',
 
-    direction: 'ltr',
+  gradients: true,
 
-    gradients: true,
+  acceleration: true,
 
-    acceleration: true,
+  elevation: 180,
 
-    elevation: 180,
+  duration: 1200
 
-    duration: 1200
-
-  });
+});
 
 
   /* =========================
