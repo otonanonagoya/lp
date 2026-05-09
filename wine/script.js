@@ -1,173 +1,65 @@
-/* =========================
-   Fade Up Animation
-========================= */
-
-const fadeElements = document.querySelectorAll('.fade-up');
-
-const observer = new IntersectionObserver((entries) => {
-
-  entries.forEach((entry) => {
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-
-  });
-
-}, {
-  threshold: 0.15
-});
-
-fadeElements.forEach((el) => {
-  observer.observe(el);
-});
-
-
-/* =========================
-   Magazine
-========================= */
-
 $(function () {
-
-  const prevBtn = document.querySelector('.archive-nav.prev');
-  const nextBtn = document.querySelector('.archive-nav.next');
-
-  // =========================
-  // Responsive Size
-  // =========================
-
-  let bookWidth;
-
-  if (window.innerWidth <= 768) {
-
-    bookWidth = window.innerWidth * 0.92;
-
-  } else {
-
-    bookWidth = Math.min(window.innerWidth * 0.82, 1200);
-
-  }
-
-  const pageWidth = bookWidth / 2;
-
-  // A4比率に近い高さ
-  const bookHeight = pageWidth * 1.42;
-
-
-  // =========================
-  // turn.js
-  // =========================
-
-  $('#magazine').turn({
-
-    width: bookWidth,
-
-    height: bookHeight,
-
-    autoCenter: true,
-
-    display: 'double',
-
-    elevation: 50,
-
-    gradients: true,
-
-    duration: 1200,
-
-    page: 2,
-
-    when: {
-
-      turned: function () {
-
-        updateNav();
-
-      }
-
-    }
-
-  });
-
-
-  // =========================
-  // Navigation Visibility
-  // =========================
-
-  function updateNav() {
-
-    const currentPage =
-      $('#magazine').turn('page');
-
-    const totalPages =
-      $('#magazine').turn('pages');
-
-
-    // 初期見開きでは ← 非表示
-    if (currentPage <= 2) {
-
-      prevBtn.classList.add('hidden');
-
-    } else {
-
-      prevBtn.classList.remove('hidden');
-
-    }
-
-
-    // 最終見開きでは → 非表示
-    if (currentPage >= totalPages - 1) {
-
-      nextBtn.classList.add('hidden');
-
-    } else {
-
-      nextBtn.classList.remove('hidden');
-
-    }
-
-  }
-
-
-  // 初期状態
-  updateNav();
-
-
-  // =========================
-  // Prev
-  // =========================
-
-  prevBtn.addEventListener('click', () => {
-
-    const currentPage =
-      $('#magazine').turn('page');
-
-    if (currentPage > 2) {
-
-      $('#magazine').turn('previous');
-
-    }
-
-  });
-
-
-  // =========================
-  // Next
-  // =========================
-
-  nextBtn.addEventListener('click', () => {
-
-    const currentPage =
-      $('#magazine').turn('page');
-
-    const totalPages =
-      $('#magazine').turn('pages');
-
-    if (currentPage < totalPages - 1) {
-
-      $('#magazine').turn('next');
-
-    }
-
-  });
-
+const prevBtn = document.querySelector('.archive-nav.prev');
+const nextBtn = document.querySelector('.archive-nav.next');
+function initMagazine() {
+let bookWidth;
+if (window.innerWidth <= 768) {
+bookWidth = window.innerWidth * 0.9;
+} else {
+bookWidth = Math.min(window.innerWidth * 0.8, 1000);
+}
+const pageWidth = bookWidth / 2;
+const bookHeight = pageWidth * 1.414; // A4比率
+$('#magazine').turn({
+width: bookWidth,
+height: bookHeight,
+autoCenter: true,
+display: 'double',
+gradients: true,
+duration: 1000,
+page: 2,
+when: {
+turned: function () {
+updateNav();
+}
+}
+});
+}
+function updateNav() {
+const currentPage = $('#magazine').turn('page');
+const totalPages = $('#magazine').turn('pages');
+// 最初の見開き
+if (currentPage <= 2) {
+prevBtn.classList.add('hidden');
+} else {
+prevBtn.classList.remove('hidden');
+}
+// 最後の見開き
+if (currentPage >= totalPages - 1) {
+nextBtn.classList.add('hidden');
+} else {
+nextBtn.classList.remove('hidden');
+}
+}
+// 初期化
+initMagazine();
+updateNav();
+// イベント
+prevBtn.addEventListener('click', () => $('#magazine').turn('previous'));
+nextBtn.addEventListener('click', () => $('#magazine').turn('next'));
+// リサイズ対応
+let resizeTimer;
+window.addEventListener('resize', () => {
+clearTimeout(resizeTimer);
+resizeTimer = setTimeout(() => {
+location.reload(); // turn.jsのサイズ再計算はリロードが最も確実
+}, 200);
+});
+// Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) entry.target.classList.add('show');
+});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 });
