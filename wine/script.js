@@ -29,11 +29,19 @@ fadeElements.forEach((el) => {
 
 $(function () {
 
+  // responsive size
+  const bookWidth = Math.min(window.innerWidth * 0.92, 900);
+
+  const pageWidth = bookWidth / 2;
+
+  // A4比率に近い
+  const bookHeight = pageWidth * 1.42;
+
   $('#magazine').turn({
 
-    width: 800,
+    width: bookWidth,
 
-    height: 560,
+    height: bookHeight,
 
     autoCenter: true,
 
@@ -64,7 +72,6 @@ $(function () {
   // previous
   prevBtn.addEventListener('click', () => {
 
-    // ダミーページへ戻らない
     if ($('#magazine').turn('page') > 2) {
 
       $('#magazine').turn('previous');
