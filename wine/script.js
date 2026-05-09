@@ -89,10 +89,7 @@ $(function () {
     $('#magazine').turn('pages');
 
 
-  // =========================
-  // Prev
-  // =========================
-
+  // prev
   if (currentPage <= 2) {
 
     prevBtn.classList.add('hidden');
@@ -104,11 +101,7 @@ $(function () {
   }
 
 
-  // =========================
-  // Next
-  // =========================
-
-  // 最終見開き判定
+  // next
   if (currentPage >= totalPages - 2) {
 
     nextBtn.classList.add('hidden');
@@ -120,7 +113,6 @@ $(function () {
   }
 
 }
-
 
   // 初期状態
   updateNav();
