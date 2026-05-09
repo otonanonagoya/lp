@@ -1,19 +1,19 @@
 /* =========================
-   Variables: 彩度を抑え、質を上げる配色
+   Variables
 ========================= */
 :root {
   --bg: #080808;
   --bg-sub: #0D0D0D;
-  --text: #F8F5F0; /* わずかに暖かみを加えた白 */
+  --text: #F8F5F0;
   --muted: #A09B93;
   --line: rgba(255, 255, 255, 0.05);
-  --gold: #C5A070; /* 派手さを抑えたシャンパンゴールド */
+  --gold: #C5A070;
   --wine: #4A121A;
   --easing: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* =========================
-   Base Rules
+   Base Rules (横スクロールを徹底排除)
 ========================= */
 * {
   margin: 0;
@@ -21,18 +21,18 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* HTML/BODY両方でガード */
+  position: relative;
   background-color: var(--bg);
 }
 
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  background: var(--bg);
   color: var(--text);
   font-family: 'Noto Serif JP', serif;
-  overflow-x: hidden;
   line-height: 1.8;
 }
 
@@ -41,18 +41,13 @@ img {
   display: block;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ギャラリーの質感を演出するレイヤー */
+/* 質感を司るオーバーレイ */
 .grain {
   position: fixed;
   inset: 0;
-  pointer-events: none;
+  pointer-events: none; /* クリックを透過させる */
   opacity: 0.04;
-  z-index: 1000;
+  z-index: 10;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   mix-blend-mode: overlay;
 }
@@ -60,26 +55,27 @@ a {
 .ambient-light {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 999;
+  pointer-events: none; /* クリックを透過させる */
+  z-index: 11;
   background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%);
 }
 
 /* =========================
-   Layout & Components
+   Layout
 ========================= */
 .section {
-  padding: clamp(160px, 20vh, 240px) 0; /* 余白を拡大し、デバイス可変に */
+  padding: clamp(160px, 20vh, 240px) 0;
   position: relative;
+  overflow: hidden; /* セクション単位でもはみ出しを禁止 */
 }
 
 .container {
-  width: min(1200px, calc(100% - 80px));
+  width: min(1200px, calc(100% - 60px));
   margin: auto;
 }
 
 .container.narrow {
-  width: min(820px, calc(100% - 80px));
+  width: min(820px, calc(100% - 60px));
 }
 
 .section-en {
@@ -101,12 +97,10 @@ a {
 }
 
 /* =========================
-   FV (First View)
+   FV
 ========================= */
 .fv {
   min-height: 100svh;
-  position: relative;
-  overflow: hidden;
   display: flex;
   align-items: center;
 }
@@ -117,359 +111,154 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
-  gap: 1px; /* グリッド間に微細な隙間 */
-  background: var(--line);
+  gap: 1px;
 }
 
 .fv-item { overflow: hidden; background: var(--bg); }
-.fv-item.large { grid-row: span 2; grid-column: span 1; }
-.fv-item.wide { grid-column: span 2; }
-
 .fv-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100%; height: 100%; object-fit: cover;
   filter: brightness(0.4) grayscale(0.2);
   transform: scale(1.1);
   transition: transform 10s var(--easing);
 }
 
-.fv:hover .fv-item img {
-  transform: scale(1.0);
-}
-
 .fv-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    linear-gradient(to bottom, rgba(8,8,8,0.2), rgba(8,8,8,0.95)),
-    radial-gradient(circle at 20% 50%, rgba(0,0,0,0) 0%, rgba(8,8,8,0.6) 100%);
+  background: linear-gradient(to bottom, rgba(8,8,8,0.2), rgba(8,8,8,0.95));
 }
 
-.fv-content {
-  position: relative;
-  z-index: 2;
-  padding-left: 8vw;
-}
+.fv-content { position: relative; z-index: 5; padding-left: 8vw; }
+.fv-title { font-size: clamp(48px, 10vw, 100px); font-weight: 200; line-height: 1.1; margin-bottom: 48px; }
 
-.fv-label {
-  font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 0.5em;
-  font-size: 13px;
-  margin-bottom: 40px;
-  color: var(--gold);
-}
-
-.fv-title {
-  font-size: clamp(48px, 10vw, 100px);
-  line-height: 1.1;
-  letter-spacing: -0.05em;
-  font-weight: 200;
-  margin-bottom: 48px;
-}
-
-.fv-line {
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
-  margin-bottom: 48px;
-  opacity: 0.6;
-}
-
-.fv-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(24px, 3vw, 32px);
-  margin-bottom: 24px;
-  font-weight: 300;
-}
-
-.fv-text {
-  font-size: 15px;
-  line-height: 2.2;
-  color: var(--muted);
-  max-width: 400px;
-}
-
-.scroll-indicator {
-  position: absolute;
-  right: 60px;
-  bottom: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  color: var(--muted);
-  z-index: 2;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-}
+.scroll-indicator { position: absolute; right: 40px; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px; color: var(--muted); }
+.scroll-line { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--gold), transparent); }
 
 /* =========================
    Manifesto
 ========================= */
-.manifesto-title {
-  font-size: clamp(38px, 6vw, 68px);
-  line-height: 1.3;
-  letter-spacing: -0.04em;
-  font-weight: 300;
-  margin-bottom: 80px;
-}
-
-.manifesto-body p {
-  font-size: 18px;
-  line-height: 2.6;
-  color: var(--muted);
-  margin-bottom: 56px;
-}
+.manifesto-title { font-size: clamp(38px, 6vw, 68px); font-weight: 300; line-height: 1.3; margin-bottom: 80px; }
+.manifesto-body p { font-size: 18px; color: var(--muted); margin-bottom: 56px; }
 
 /* =========================
-   Scene (Gallery Style)
+   Scene (横スクロールの主な原因を修正)
 ========================= */
 .scene-grid {
-  width: min(1500px, calc(100% - 60px));
-  margin: auto;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 20px;
 }
-
-.scene-item {
-  overflow: hidden;
-  background: #111;
-  border: 1px solid var(--line);
-}
-
-.scene-item img {
-  aspect-ratio: 1 / 1.2;
-  object-fit: cover;
-  transition: 1.5s var(--easing);
-  filter: saturate(0.8);
-}
-
+.scene-item img { aspect-ratio: 1 / 1.2; object-fit: cover; transition: 1.5s var(--easing); }
 .scene-item.wide { grid-column: span 2; }
-.scene-item.wide img { aspect-ratio: 16 / 8.5; }
-.scene-item:hover img { transform: scale(1.05); filter: saturate(1.1); }
+.scene-item.wide img { aspect-ratio: 16 / 9; }
 
 .scene-words {
-  display: flex;
-  gap: 60px;
+  width: 100%;
+  overflow: hidden; /* ここで完全ガード */
   margin-top: 80px;
-  padding: 40px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(40px, 6vw, 100px);
-  color: rgba(255, 255, 255, 0.03);
+}
+
+.words-inner {
+  display: flex;
+  gap: 40px;
+  padding: 40px 0;
   justify-content: center;
-}
-
-/* =========================
-   Last Year
-========================= */
-.lastyear-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: clamp(60px, 8vw, 120px);
-  align-items: flex-start;
-}
-
-.lastyear-image {
-  border: 1px solid var(--line);
-  padding: 15px;
-  background: rgba(255,255,255,0.02);
-}
-
-.lastyear-block { margin-bottom: 80px; }
-.lastyear-block h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  margin-bottom: 24px;
-  font-weight: 300;
+  font-size: clamp(40px, 8vw, 120px);
+  color: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
 }
 
 /* =========================
-   Archive Book (Light & Shadow)
+   Archive Book (操作性の修正)
 ========================= */
+.archive-book {
+  background-color: var(--bg-sub);
+}
+
 .book-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
-  margin-top: 100px;
+  gap: 60px;
+  width: 100%;
 }
 
 #magazine {
-  filter: 
-    drop-shadow(0 30px 50px rgba(0,0,0,0.8))
-    drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
 }
 
 .archive-controls {
   display: flex;
-  gap: 48px;
-  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 100; /* 最前面へ */
 }
 
 .archive-nav {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  transition: all 0.5s var(--easing);
-  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  pointer-events: auto !important; /* 強制的に反応させる */
 }
 
 .archive-nav:hover {
+  background: var(--gold);
   border-color: var(--gold);
-  background: rgba(197, 160, 112, 0.1);
-  transform: translateY(-5px);
+  color: var(--bg);
 }
 
-.archive-nav.hidden { opacity: 0; pointer-events: none; }
-
-/* =========================
-   Participation Tags
-========================= */
-.participation-tags {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.participation-tags span {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--muted);
-  transition: 0.4s;
-  background: linear-gradient(to bottom right, rgba(255,255,255,0.03), transparent);
-}
-
-.participation-tags span:hover {
-  border-color: var(--gold);
-  color: var(--text);
-  background: rgba(197, 160, 112, 0.05);
+.archive-nav.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* =========================
-   Creative Process
+   Info
 ========================= */
-.process {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-  margin-top: 100px;
-}
-
-.process div {
-  border-top: 1px solid var(--gold);
-  padding-top: 32px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  color: var(--muted);
-  font-weight: 300;
-  transition: 0.5s;
-}
-
-.process div:hover { color: var(--gold); transform: translateY(-5px); }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.info-card { padding: 40px; border: 1px solid var(--line); background: rgba(255,255,255,0.01); }
+.info-card span { color: var(--gold); font-size: 12px; letter-spacing: 0.2em; display: block; margin-bottom: 20px; }
 
 /* =========================
-   Info Cards
+   CTA
 ========================= */
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-}
-
-.info-card {
-  padding: 60px;
-  border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
-}
-
-.info-card span {
-  font-size: 12px;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  margin-bottom: 32px;
-  display: block;
-}
-
-/* =========================
-   CTA: 終幕への演出
-========================= */
-.cta {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-sub);
-}
-
-.cta-bg {
-  position: absolute;
-  inset: 0;
-  filter: brightness(0.2) saturate(0.5);
-}
-
-.cta-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
+.cta { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; }
+.cta-bg { position: absolute; inset: 0; object-fit: cover; filter: brightness(0.2); }
+.cta-content { position: relative; z-index: 5; text-align: center; }
 .cta-button {
-  margin-top: 64px;
-  padding: 24px 64px;
+  display: inline-block;
+  margin-top: 40px;
+  padding: 20px 60px;
   border: 1px solid var(--gold);
   color: var(--gold);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  letter-spacing: 0.2em;
-  transition: 0.5s;
-  overflow: hidden;
-  position: relative;
+  transition: 0.4s;
 }
-
-.cta-button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  transform: translateX(-100%);
-  transition: 0.5s var(--easing);
-  z-index: -1;
-}
-
-.cta-button:hover { color: var(--bg); }
-.cta-button:hover::before { transform: translateX(0); }
+.cta-button:hover { background: var(--gold); color: var(--bg); }
 
 /* =========================
    Animations
 ========================= */
 .fade-up {
   opacity: 0;
-  transform: translateY(60px);
-  transition: 1.8s var(--easing);
+  transform: translateY(40px);
+  transition: 1.2s var(--easing);
 }
-
 .fade-up.show {
   opacity: 1;
   transform: none;
@@ -478,19 +267,11 @@ a {
 /* =========================
    Responsive
 ========================= */
-@media (max-width: 1024px) {
-  .scene-grid { grid-template-columns: repeat(2, 1fr); }
-  .participation-tags { grid-template-columns: repeat(2, 1fr); }
-  .process { grid-template-columns: repeat(3, 1fr); }
-}
-
 @media (max-width: 768px) {
-  .section { padding: 120px 0; }
-  .lastyear-grid, .info-grid { grid-template-columns: 1fr; }
+  .section { padding: 100px 0; }
+  .info-grid { grid-template-columns: 1fr; }
   .fv-grid { grid-template-columns: repeat(2, 1fr); }
-  .fv-content { padding-left: 24px; }
-  .archive-nav { width: 56px; height: 56px; }
+  .scene-grid { grid-template-columns: 1fr; }
+  .scene-item.wide { grid-column: span 1; }
+  .archive-nav { width: 60px; height: 60px; }
 }
-
-/* 共通タイトル調整 */
-.section-title, .manifesto-title, .participation-title, .cta h2 { text-wrap: balance; }
