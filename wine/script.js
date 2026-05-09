@@ -1,115 +1,103 @@
 /**
  * OTONA NO NAGOYA - Wine Issue 2026
- * UX Design & Core Logic
+ * Core Interaction Fix
  */
 
 $(function () {
   
-  // 1. スクロールに応じたフェードアップ演出
-  const initFadeAnimation = () => {
-    const fadeElements = document.querySelectorAll('.fade-up');
-    
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
+  // 1. スクロールアニメーション
+  const initFade = () => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          // 一度表示されたら監視を解除（ギャラリー的な静寂を保つため）
-          observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
-
-    fadeElements.forEach((el) => observer.observe(el));
+    }, { threshold: 0.1 });
+    $('.fade-up').each((i, el) => observer.observe(el));
   };
 
-  // 2. マガジンビューアー (turn.js) の制御
-  const initMagazine = () => {
-    const $magazine = $('#magazine');
-    const prevBtn = document.querySelector('.archive-nav.prev');
-    const nextBtn = document.querySelector('.archive-nav.next');
-
-    const getBookSize = () => {
-      let width;
-      if (window.innerWidth <= 768) {
-        width = window.innerWidth * 0.95;
-      } else if (window.innerWidth <= 1200) {
-        width = window.innerWidth * 0.85;
-      } else {
-        width = 1100;
-      }
+  // 2. アーカイブ誌面 (turn.js)
+  const initBook = () => {
+    const $mag = $('#magazine');
+    
+    // 画面幅に合わせたサイズの決定
+    const getDim = () => {
+      const winW = $(window).width();
+      let w = 1100;
+      if (winW < 768) w = winW * 0.94;
+      else if (winW < 1200) w = winW * 0.85;
+      
       return {
-        width: width,
-        height: (width / 2) * 1.414 // A4比率に厳密に
+        width: w,
+        height: (w / 2) * 1.414
       };
     };
 
-    const size = getBookSize();
+    const dim = getDim();
 
-    $magazine.turn({
-      width: size.width,
-      height: size.height,
+    // Turn.js 初期化
+    $mag.turn({
+      width: dim.width,
+      height: dim.height,
       autoCenter: true,
       display: 'double',
-      elevation: 100,
       gradients: true,
-      duration: 1400, // より優雅な速度
+      duration: 1000,
       page: 2,
       when: {
-        turned: function () {
-          updateNavStatus();
+        turned: function() {
+          updateBtns();
         }
       }
     });
 
-    const updateNavStatus = () => {
-      const currentPage = $magazine.turn('page');
-      const totalPages = $magazine.turn('pages');
-
-      if (currentPage <= 2) {
-        prevBtn.classList.add('hidden');
-      } else {
-        prevBtn.classList.remove('hidden');
-      }
-
-      if (currentPage >= totalPages - 1) {
-        nextBtn.classList.add('hidden');
-      } else {
-        nextBtn.classList.remove('hidden');
-      }
+    // ボタンの表示制御
+    const updateBtns = () => {
+      const current = $mag.turn('page');
+      const total = $mag.turn('pages');
+      
+      $('#prev-btn').toggleClass('hidden', current <= 2);
+      $('#next-btn').toggleClass('hidden', current >= total - 1);
     };
 
-    // 初回実行
-    updateNavStatus();
+    // 初期ボタン状態
+    updateBtns();
 
-    // 操作イベント
-    prevBtn.addEventListener('click', () => $magazine.turn('previous'));
-    nextBtn.addEventListener('click', () => $magazine.turn('next'));
+    // クリックイベントの確実なバインド (Event Delegation)
+    $(document).on('click', '#prev-btn', function(e) {
+      e.preventDefault();
+      $mag.turn('previous');
+    });
 
-    // リサイズ最適化
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        const newSize = getBookSize();
-        $magazine.turn('size', newSize.width, newSize.height);
-      }, 300);
+    $(document).on('click', '#next-btn', function(e) {
+      e.preventDefault();
+      $mag.turn('next');
+    });
+
+    // リサイズ対応
+    let timer;
+    $(window).on('resize', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const n = getDim();
+        $mag.turn('size', n.width, n.height);
+      }, 200);
     });
   };
 
-  // 3. パフォーマンスと触感の最適化
-  const initSmoothInteraction = () => {
-    // ホバー時に微かな視差効果（Parallax）を画像に与える（オプション）
-    // 今回は静寂を重視し、CSSのTransitionで完結させています。
+  // 3. 横スクロールを物理的に無効化する補助（モバイル対策）
+  const preventHorizontalScroll = () => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollX !== 0) {
+        window.scrollTo(0, window.scrollY);
+      }
+    }, { passive: true });
   };
 
-  // 全機能の起動
-  initFadeAnimation();
-  initMagazine();
-  initSmoothInteraction();
+  // 起動
+  initFade();
+  initBook();
+  preventHorizontalScroll();
 
 });
