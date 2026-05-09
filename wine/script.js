@@ -1,103 +1,84 @@
-/**
- * OTONA NO NAGOYA - Wine Issue 2026
- * Core Interaction Fix
- */
-
 $(function () {
-  
-  // 1. スクロールアニメーション
-  const initFade = () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.1 });
-    $('.fade-up').each((i, el) => observer.observe(el));
-  };
+  // 1. フェードアニメーション
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.1 });
+  $('.fade-up').each((i, el) => observer.observe(el));
 
-  // 2. アーカイブ誌面 (turn.js)
-  const initBook = () => {
-    const $mag = $('#magazine');
+  // 2. アーカイブ誌面 (Turn.js) 徹底改善
+  const $mag = $('#magazine');
+  const $window = $(window);
+
+  const initTurn = () => {
+    const winW = $window.width();
+    const isMobile = winW < 768;
     
-    // 画面幅に合わせたサイズの決定
-    const getDim = () => {
-      const winW = $(window).width();
-      let w = 1100;
-      if (winW < 768) w = winW * 0.94;
-      else if (winW < 1200) w = winW * 0.85;
-      
-      return {
-        width: w,
-        height: (w / 2) * 1.414
-      };
-    };
+    // コンテナ幅に対する誌面サイズの計算（見切れ防止）
+    let bookW = Math.min(winW - 60, 1000);
+    if (isMobile) bookW = winW - 40; // モバイルは幅一杯
 
-    const dim = getDim();
+    const bookH = (isMobile) ? (bookW * 1.414) : (bookW / 2 * 1.414);
 
-    // Turn.js 初期化
+    // すでに初期化されている場合は一度破棄（リサイズ対策）
+    if ($mag.data().done) {
+       $mag.turn('destroy').off();
+    }
+
     $mag.turn({
-      width: dim.width,
-      height: dim.height,
+      width: bookW,
+      height: bookH,
       autoCenter: true,
-      display: 'double',
+      display: isMobile ? 'single' : 'double', // モバイルは見切れ防止のため1枚表示
+      acceleration: true,
       gradients: true,
+      elevation: 50,
       duration: 1000,
-      page: 2,
       when: {
-        turned: function() {
-          updateBtns();
+        turned: function(e, page) {
+          updateControls(page);
         }
       }
     });
-
-    // ボタンの表示制御
-    const updateBtns = () => {
-      const current = $mag.turn('page');
-      const total = $mag.turn('pages');
-      
-      $('#prev-btn').toggleClass('hidden', current <= 2);
-      $('#next-btn').toggleClass('hidden', current >= total - 1);
-    };
-
-    // 初期ボタン状態
-    updateBtns();
-
-    // クリックイベントの確実なバインド (Event Delegation)
-    $(document).on('click', '#prev-btn', function(e) {
-      e.preventDefault();
-      $mag.turn('previous');
-    });
-
-    $(document).on('click', '#next-btn', function(e) {
-      e.preventDefault();
-      $mag.turn('next');
-    });
-
-    // リサイズ対応
-    let timer;
-    $(window).on('resize', () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const n = getDim();
-        $mag.turn('size', n.width, n.height);
-      }, 200);
-    });
   };
 
-  // 3. 横スクロールを物理的に無効化する補助（モバイル対策）
-  const preventHorizontalScroll = () => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollX !== 0) {
-        window.scrollTo(0, window.scrollY);
-      }
-    }, { passive: true });
+  const updateControls = (page) => {
+    const total = $mag.turn('pages');
+    $('#prev-btn').toggleClass('hidden', page === 1);
+    $('#next-btn').toggleClass('hidden', page === total);
   };
 
-  // 起動
-  initFade();
-  initBook();
-  preventHorizontalScroll();
+  // Turn.js実行
+  initTurn();
 
+  // 3. ボタンイベント（確実な動作のためにデリゲートではなく直接バインド）
+  // turn.jsの内部処理と競合しないよう preventDefault を徹底
+  $('#prev-btn').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $mag.turn('previous');
+  });
+
+  $('#next-btn').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $mag.turn('next');
+  });
+
+  // 4. リサイズ時の再計算（見切れ再発防止）
+  let resizeTimer;
+  $window.on('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      initTurn();
+    }, 300);
+  });
+
+  // 5. 横スクロールの強制排除
+  $window.on('scroll', () => {
+    if ($window.scrollLeft() !== 0) {
+      $window.scrollLeft(0);
+    }
+  });
 });
