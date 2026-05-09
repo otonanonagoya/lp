@@ -874,3 +874,16 @@ a{
   display: block;
 
 }
+/* =========================
+   Archive Nav
+========================= */
+
+.archive-nav.hidden {
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: scale(0.8);
+
+}
