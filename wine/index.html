@@ -457,63 +457,6 @@
 <!-- turn.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  $('#magazine').turn({
-
-    width:
-      window.innerWidth <= 768
-        ? window.innerWidth * 0.96
-        : Math.min(1400, window.innerWidth * 0.94),
-
-    height:
-      window.innerWidth <= 768
-        ? window.innerWidth * 1.42
-        : Math.min(860, window.innerWidth * 0.68),
-
-    autoCenter:true,
-
-    display:'double',
-
-    direction:'rtl',
-
-    gradients:true,
-
-    acceleration:true,
-
-    elevation:180,
-
-    duration:1400
-
-  });
-
-  /* =========================
-     Long Edge Page Turn
-  ========================= */
-
-  const leftHit =
-    document.querySelector('.page-hit.left');
-
-  const rightHit =
-    document.querySelector('.page-hit.right');
-
-  leftHit.addEventListener('click',()=>{
-
-    $('#magazine').turn('next');
-
-  });
-
-  rightHit.addEventListener('click',()=>{
-
-    $('#magazine').turn('previous');
-
-  });
-
-});
-
-</script>
 
 /* =========================
    Long Edge Page Turn
