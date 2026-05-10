@@ -71,3 +71,34 @@ html, body { width: 100%; overflow-x: hidden; background: var(--bg); color: var(
   .lastyear-grid, .info-grid, .participation-tags { grid-template-columns: 1fr; }
   .process { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
+/* 既存のstyle.cssに以下を適用/上書き */
+
+#magazine {
+  margin: 0 auto;
+  background: none; /* 背景を透明にするか、周囲に合わせる */
+}
+
+.page {
+  background: transparent;
+  overflow: hidden;
+}
+
+/* ダミーページを完全に隠す */
+.page.dummy {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.page img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+/* モバイルでの見栄え調整 */
+@media (max-width: 768px) {
+  .magazine-viewport {
+    padding: 10px 0;
+  }
+}
