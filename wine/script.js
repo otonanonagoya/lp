@@ -18,14 +18,17 @@ $(function () {
     let bookW = Math.min(winW - 40, 1100); 
     let bookH = (bookW / 2) * ratio;
 
-    if (bookH > winH * 0.7) {
-      bookH = winH * 0.7;
+    if (bookH > winH * 0.8) {
+      bookH = winH * 0.8;
       bookW = (bookH / ratio) * 2;
     }
 
     if ($mag.data().done) {
       $mag.turn('destroy').off();
     }
+
+    // 現在の div.page の総数を取得（今回の場合は 13）
+    const totalPages = $mag.find('.page').length;
 
     $mag.turn({
       width: Math.floor(bookW),
@@ -34,16 +37,18 @@ $(function () {
       acceleration: true,
       gradients: true,
       elevation: 50,
-      page: 2, // 重要：ダミーの次の「見開き」から開始
+      // 【ここを修正】物理的な最後のページを初期表示に設定
+      page: totalPages, 
       autoCenter: true,
       duration: 800,
-      direction: 'ltr', // 左から右へめくる設定
+      direction: 'rtl', // 右開き（戻る挙動でページを進めるため）
       when: {
         turned: function(e, page) {
-          const total = $mag.turn('pages');
-          // ボタンの不透明度（1P目のダミーには戻らせない）
-          $('#prev-btn').css('opacity', page <= 2 ? 0.2 : 1);
-          $('#next-btn').css('opacity', page >= total - 1 ? 0.2 : 1);
+          // ページ順が逆転しているため、ボタンの不透明度ロジックを調整
+          // 最初の表示（totalPages）のとき、左矢印（前の誌面へ）を薄くする
+          $('#prev-btn').css('opacity', page >= totalPages - 1 ? 0.2 : 1);
+          // 最後のページ（2P付近）に到達したとき、右矢印（次の誌面へ）を薄くする
+          $('#next-btn').css('opacity', page <= 2 ? 0.2 : 1);
         }
       }
     });
@@ -51,15 +56,16 @@ $(function () {
 
   initTurn();
 
-  // 3. ナビゲーション（LTR設定に合わせた標準的な挙動）
+  // 3. ナビゲーション
+  // 物理的な順序を逆に辿るため、命令を入れ替えます
   $('#prev-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('previous');
+    $mag.turn('next'); // 物理的な「次」＝ 誌面としては「前」
   });
 
   $('#next-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('next');
+    $mag.turn('previous'); // 物理的な「前」＝ 誌面としては「次」
   });
 
   let timer;
