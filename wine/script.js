@@ -7,20 +7,17 @@ $(function () {
   }, { threshold: 0.1 });
   $('.fade-up').each((i, el) => observer.observe(el));
 
-  // 2. アーカイブ誌面 (Turn.js) - 1448:2000 比率の厳密適用
+  // 2. アーカイブ誌面 (Turn.js) - 左開き設定
   const $mag = $('#magazine');
-  const ratio = 2000 / 1448; // = 約1.3812
+  const ratio = 2000 / 1448;
 
   const initTurn = () => {
     const winW = $(window).width();
     const winH = $(window).height();
 
-    // 画面幅に基づいたブック幅の決定（見開きなので2枚分）
     let bookW = Math.min(winW - 40, 1100); 
-    // 1枚あたりの幅は bookW / 2。それに比率を掛けて高さを算出
     let bookH = (bookW / 2) * ratio;
 
-    // 画面の高さに収まらない場合は高さを基準に縮小
     if (bookH > winH * 0.8) {
       bookH = winH * 0.8;
       bookW = (bookH / ratio) * 2;
@@ -40,9 +37,11 @@ $(function () {
       page: 2, 
       autoCenter: true,
       duration: 800,
+      direction: 'ltr', // ここを 'ltr' (左から右) に変更
       when: {
         turned: function(e, page) {
           const total = $mag.turn('pages');
+          // ボタンの不透明度制御
           $('#prev-btn').css('opacity', page <= 2 ? 0.2 : 1);
           $('#next-btn').css('opacity', page >= total - 1 ? 0.2 : 1);
         }
@@ -52,18 +51,18 @@ $(function () {
 
   initTurn();
 
-  // 3. 操作イベント
+  // 3. ナビゲーション操作
+  // direction: 'ltr' に合わせ、next/previous の役割を維持します
   $('#prev-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('previous');
+    $mag.turn('previous'); // 前のページへ
   });
 
   $('#next-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('next');
+    $mag.turn('next'); // 次のページへ
   });
 
-  // 4. リサイズ対策
   let timer;
   $(window).on('resize', () => {
     clearTimeout(timer);
