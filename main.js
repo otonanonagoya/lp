@@ -1,167 +1,76 @@
-// =====================
-// 従来のカウントアップ + フェードイン
-// =====================
+$(function () {
+  // 1. フェードアニメーション（既存維持）
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.1 });
+  $('.fade-up').each((i, el) => observer.observe(el));
 
-const countUp = (el) => {
-  const target = parseFloat(el.getAttribute('data-target'));
-  const duration = 2000; 
-  const startTime = performance.now();
+  // 2. アーカイブ誌面 (Turn.js)
+  const $mag = $('#magazine');
+  const ratio = 2000 / 1448; 
 
-  const updateCount = (currentTime) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeOutQuad = 1 - (1 - progress) * (1 - progress);
-    const currentValue = (easeOutQuad * target).toFixed(1);
+  const initTurn = () => {
+    const winW = $(window).width();
+    const winH = $(window).height();
 
-    el.innerText = target % 1 === 0 ? Math.floor(currentValue) : currentValue;
+    let bookW = Math.min(winW - 40, 1100); 
+    let bookH = (bookW / 2) * ratio;
 
-    if (progress < 1) {
-      requestAnimationFrame(updateCount);
-    } else {
-      el.innerText = target;
-    }
-  };
-  requestAnimationFrame(updateCount);
-};
-
-const targets = document.querySelectorAll(
-  '.image-zoom, .text, .overlay-text'
-);
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-
-      const counters = entry.target.querySelectorAll('.count-up');
-      counters.forEach(counter => countUp(counter));
-
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  rootMargin: "0px 0px -25% 0px"
-});
-
-targets.forEach(el => observer.observe(el));
-
-
-// =====================
-// コンタクトフォーム
-// =====================
-const form = document.getElementById("contactForm");
-
-let isSubmitting = false;
-
-if (form) {
-  const button = form.querySelector("button");
-
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+    if (bookH > winH * 0.8) {
+      bookH = winH * 0.8;
+      bookW = (bookH / ratio) * 2;
     }
 
-    if (isSubmitting) return;
-    isSubmitting = true;
+    if ($mag.data().done) {
+      $mag.turn('destroy').off();
+    }
 
-    button.disabled = true;
-    button.innerText = "送信しています…";
-    button.style.opacity = "0.7";
+    // 現在の div.page の総数を取得（今回の場合は 13）
+    const totalPages = $mag.find('.page').length;
 
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/mpqbzpop", {
-        method: "POST",
-        body: data,
-        headers: {
-          'Accept': 'application/json'
+    $mag.turn({
+      width: Math.floor(bookW),
+      height: Math.floor(bookH),
+      display: 'double', 
+      acceleration: true,
+      gradients: true,
+      elevation: 50,
+      // 【ここを修正】物理的な最後のページを初期表示に設定
+      page: totalPages, 
+      autoCenter: true,
+      duration: 800,
+      direction: 'rtl', // 右開き（戻る挙動でページを進めるため）
+      when: {
+        turned: function(e, page) {
+          // ページ順が逆転しているため、ボタンの不透明度ロジックを調整
+          // 最初の表示（totalPages）のとき、左矢印（前の誌面へ）を薄くする
+          $('#prev-btn').css('opacity', page >= totalPages - 1 ? 0.2 : 1);
+          // 最後のページ（2P付近）に到達したとき、右矢印（次の誌面へ）を薄くする
+          $('#next-btn').css('opacity', page <= 2 ? 0.2 : 1);
         }
-      });
-
-      if (response.ok) {
-        console.log("送信成功");
-
-        form.reset();
-        button.innerText = "送信完了しました";
-
-        setTimeout(() => {
-          window.location.href = "https://otonanonagoya.github.io/lp/thanks.html";
-        }, 500);
-      } else {
-        throw new Error();
       }
+    });
+  };
 
-    } catch (error) {
-      isSubmitting = false;
-      button.disabled = false;
-      button.innerText = "掲載について相談する";
-      button.style.opacity = "1";
-      alert("送信に失敗しました。");
-    }
+  initTurn();
+
+  // 3. ナビゲーション
+  // 物理的な順序を逆に辿るため、命令を入れ替えます
+  $('#prev-btn').on('click', function(e) {
+    e.preventDefault();
+    $mag.turn('next'); // 物理的な「次」＝ 誌面としては「前」
   });
-}
-// =====================
-// FV スライド（高級ゆっくり）
-// =====================
 
-const slides = document.querySelectorAll(".fv-bg");
-let current = 0;
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    if (i === index) slide.classList.add("active");
+  $('#next-btn').on('click', function(e) {
+    e.preventDefault();
+    $mag.turn('previous'); // 物理的な「前」＝ 誌面としては「次」
   });
-}
 
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
-
-// 初期表示
-showSlide(0);
-
-// 重要：ゆっくりが高級
-setInterval(nextSlide, 14000);
-
-// =====================
-// FV テキスト演出
-// =====================
-
-window.addEventListener("load", () => {
-  const fv = document.querySelector(".fv");
-  setTimeout(() => {
-    fv.classList.add("show");
-  }, 400);
-});
-// FVテキスト出現
-const fv = document.querySelector('.fv-content');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    fv.classList.add('show');
-  }
-});
-window.addEventListener("load", () => {
-  document.querySelector(".fv-content").classList.add("show");
-});
-
-const fvContent = document.querySelector('.fv-content');
-
-/* 初期表示（サブコピー出す） */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    fvContent.classList.add("show");
-  }, 300);
-});
-
-/* スクロールでリード表示 */
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    fvContent.classList.add('scrolled');
-  }
+  let timer;
+  $(window).on('resize', () => {
+    clearTimeout(timer);
+    timer = setTimeout(initTurn, 300);
+  });
 });
