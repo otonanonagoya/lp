@@ -1,5 +1,5 @@
 $(function () {
-  // 1. フェードアニメーション
+  // 1. フェードアニメーション（既存維持）
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
@@ -18,16 +18,14 @@ $(function () {
     let bookW = Math.min(winW - 40, 1100); 
     let bookH = (bookW / 2) * ratio;
 
-    if (bookH > winH * 0.8) {
-      bookH = winH * 0.8;
+    if (bookH > winH * 0.7) {
+      bookH = winH * 0.7;
       bookW = (bookH / ratio) * 2;
     }
 
     if ($mag.data().done) {
       $mag.turn('destroy').off();
     }
-
-    const totalPages = $mag.find('.page').length;
 
     $mag.turn({
       width: Math.floor(bookW),
@@ -36,16 +34,16 @@ $(function () {
       acceleration: true,
       gradients: true,
       elevation: 50,
-      // 逆転の発想：最後のページ（入れ替えた後の archive1）を初期表示
-      page: totalPages, 
+      page: 2, // 重要：ダミーの次の「見開き」から開始
       autoCenter: true,
       duration: 800,
-      direction: 'rtl', // デフォルトの右開き設定のまま
+      direction: 'ltr', // 左から右へめくる設定
       when: {
         turned: function(e, page) {
-          // ページ順が逆なので、不透明度制御のロジックも反転
-          $('#prev-btn').css('opacity', page >= totalPages - 1 ? 0.2 : 1);
-          $('#next-btn').css('opacity', page <= 2 ? 0.2 : 1);
+          const total = $mag.turn('pages');
+          // ボタンの不透明度（1P目のダミーには戻らせない）
+          $('#prev-btn').css('opacity', page <= 2 ? 0.2 : 1);
+          $('#next-btn').css('opacity', page >= total - 1 ? 0.2 : 1);
         }
       }
     });
@@ -53,16 +51,15 @@ $(function () {
 
   initTurn();
 
-  // 3. ナビゲーション
-  // ページ順を逆転させたため、めくる方向の命令も入れ替えます
+  // 3. ナビゲーション（LTR設定に合わせた標準的な挙動）
   $('#prev-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('next'); // 物理的には「進む」ことで前の誌面へ
+    $mag.turn('previous');
   });
 
   $('#next-btn').on('click', function(e) {
     e.preventDefault();
-    $mag.turn('previous'); // 物理的には「戻る」ことで次の誌面へ
+    $mag.turn('next');
   });
 
   let timer;
