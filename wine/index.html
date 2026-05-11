@@ -3,180 +3,473 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
   <title>Autumn Wine Issue 2026 | 大人の名古屋</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
+  <!-- ========================================
+  Grain / Ambient
+  ========================================= -->
   <div class="grain"></div>
   <div class="ambient-light"></div>
 
-  <section class="fv">
-    <div class="fv-grid">
-      <div class="fv-item large"><img src="images/fv1.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv2.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv3.webp" alt=""></div>
-      <div class="fv-item wide"><img src="images/fv4.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv5.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv6.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv7.webp" alt=""></div>
-      <div class="fv-item"><img src="images/fv8.webp" alt=""></div>
+  <!-- ========================================
+  FV Background Slideshow
+  ========================================= -->
+  <section class="fv-bg-fixed">
+    <div class="fv-bg active"><img src="images/fv1.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv2.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv3.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv4.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv5.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv6.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv7.webp" alt=""></div>
+    <div class="fv-bg"><img src="images/fv8.webp" alt=""></div>
+  </section>
+
+  <!-- ========================================
+  HERO
+  ========================================= -->
+  <section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+
+      <p class="hero-kicker fade-up">
+        OTONA NO NAGOYA
+      </p>
+
+      <h1 class="hero-title fade-up delay-1">
+        “広告”ではなく、<br>
+        <span class="keep">語るべき価値を。</span>
+      </h1>
+
+      <div class="hero-line fade-up delay-2"></div>
+
+      <p class="hero-sub fade-up delay-3">
+        Autumn Wine Issue 2026
+      </p>
+
+      <p class="hero-text fade-up delay-4">
+        東海のワインカルチャーを特集する、<br>
+        「大人の名古屋」秋の特別編集企画。
+      </p>
+
+      <div class="hero-note fade-up delay-5">
+        <span>2026年9月末発行予定</span>
+        <span>有償タイアップ企画</span>
+      </div>
+
     </div>
-    <div class="fv-overlay"></div>
-    <div class="fv-content">
-      <p class="fv-label">OTONA NO NAGOYA</p>
-      <h1 class="fv-title">東海のワインシーンに、<br><span class="keep">灯をともす。</span></h1>
-      <div class="fv-line"></div>
-      <p class="fv-sub">Autumn Wine Issue 2026</p>
-      <p class="fv-text">ワインを愛する店・人・文化を繋ぐ、<br>秋の特別編集企画。</p>
-    </div>
+
     <div class="scroll-indicator">
       <span>SCROLL</span>
       <div class="scroll-line"></div>
     </div>
+
   </section>
 
-  <section class="manifesto section">
-    <div class="container">
-      <p class="section-en">Manifesto</p>
-      <h2 class="manifesto-title fade-up">東海には、<br>まだ語られていない<br><span class="keep">ワインの魅力がある。</span></h2>
-      <div class="manifesto-body fade-up">
-        <p>ワインを深く楽しめる店。<br>想いを持って届ける作り手。<br>一杯の背景まで提案するサービス。</p>
-        <p>この地域には、まだ知られていない豊かなワインカルチャーがあります。</p>
-        <p>大人の名古屋は今年も、東海圏のワインシーンをテーマに、秋の特別編集企画を実施します。</p>
-      </div>
-    </div>
-  </section>
+  <!-- ========================================
+  INTRO
+  ========================================= -->
+  <section class="section intro">
 
-  <section class="scene section">
-    <div class="scene-grid">
-      <div class="scene-item fade-up"><img src="images/fv1.webp" alt=""></div>
-      <div class="scene-item fade-up"><img src="images/fv2.webp" alt=""></div>
-      <div class="scene-item fade-up"><img src="images/fv3.webp" alt=""></div>
-      <div class="scene-item wide fade-up"><img src="images/fv4.webp" alt=""></div>
-      <div class="scene-item fade-up"><img src="images/fv5.webp" alt=""></div>
-      <div class="scene-item fade-up"><img src="images/fv6.webp" alt=""></div>
-    </div>
-    <div class="scene-words">
-      <div class="words-inner">
-        <span>HARVEST</span><span>PAIRING</span><span>AFTERGLOW</span><span>TERROIR</span><span>CONVERSATION</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="lastyear section">
-    <div class="container">
-      <p class="section-en">Last Year</p>
-      <h2 class="section-title fade-up">昨年、多くの反響をいただいた企画。</h2>
-      <div class="lastyear-grid">
-        <div class="lastyear-image fade-up"><img src="images/fv9.webp" alt=""></div>
-        <div class="lastyear-text fade-up">
-          <div class="lastyear-block">
-            <h3>Reader Response</h3>
-            <p>企画掲載後、読者来店の反響をいただく店舗も。</p>
-          </div>
-          <div class="lastyear-block">
-            <h3>Media Expansion</h3>
-            <p>テレビ取材・新聞掲載など、新たな広がりも生まれました。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
- <section class="archive-book section">
-  <div class="container">
-    <p class="section-en">Last Autumn Issue</p>
-    <h2 class="section-title fade-up">昨年の誌面を、<br>実際にめくる。</h2>
-    <div class="book-wrap fade-up">
-      <div class="magazine-viewport">
-        <div id="magazine">
-          <div class="page dummy"></div> 
-          
-          <div class="page"><img src="images/archive9.webp" alt=""></div>
-          <div class="page"><img src="images/archive8.webp" alt=""></div>
-          <div class="page"><img src="images/archive7.webp" alt=""></div>
-          <div class="page"><img src="images/archive6.webp" alt=""></div>
-          <div class="page"><img src="images/archive5.webp" alt=""></div>
-          <div class="page"><img src="images/archive4.webp" alt=""></div>
-          <div class="page"><img src="images/archive12.webp" alt=""></div>
-          <div class="page"><img src="images/archive11.webp" alt=""></div>
-          <div class="page"><img src="images/archive3.webp" alt=""></div>
-          <div class="page"><img src="images/archive2.webp" alt=""></div>
-          <div class="page"><img src="images/archive1.webp" alt=""></div>
-          <div class="page"><img src="images/archive10.webp" alt=""></div>
-        </div>
-      </div>
-      <div class="archive-controls">
-        <button class="archive-nav next" id="next-btn"><span>←</span></button>
-        <button class="archive-nav prev" id="prev-btn"><span>→</span></button>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <section class="participation section">
     <div class="container narrow">
-      <p class="section-en">Participation</p>
-      <h2 class="participation-title fade-up">ワインに携わる、<br><span class="keep">すべての表現者へ。</span></h2>
-      <div class="participation-tags fade-up">
-        <span>Restaurant</span><span>Wine Bar</span><span>Winery</span><span>Importer</span>
-        <span>Hotel</span><span>Shop</span><span>Pairing</span><span>Service</span>
+
+      <p class="section-en fade-up">Perspective</p>
+
+      <h2 class="section-title fade-up">
+        WEB広告では届かない、<br>
+        “記憶に残る店”がある。
+      </h2>
+
+      <div class="intro-body fade-up">
+
+        <p>
+          効率だけを求めるなら、WEB広告の方が優れているかもしれません。
+        </p>
+
+        <p>
+          けれど、本当に価値を理解する人ほど、<br>
+          「誰が薦めているか」を静かに見ています。
+        </p>
+
+        <p>
+          一瞬で流れていく情報ではなく、<br>
+          時間をかけて読まれる編集物だからこそ届く層がある。
+        </p>
+
+        <p>
+          大人の名古屋は24年にわたり、<br>
+          東海の“本当に良い店”を紹介し続けてきました。
+        </p>
+
       </div>
+
     </div>
+
   </section>
 
-  <section class="creative section">
+  <!-- ========================================
+  VALUE GRID
+  ========================================= -->
+  <section class="section value-section">
+
     <div class="container">
-      <p class="section-en">Creative Direction</p>
-      <h2 class="section-title fade-up">一店ごとの魅力に合わせ、誌面表現まで設計。</h2>
-      <p class="creative-text fade-up">撮影・誌面構成・世界観設計を通して、各店舗の魅力を丁寧に表現します。</p>
+
+      <p class="section-en fade-up">Why Print</p>
+
+      <h2 class="section-title fade-up">
+        一過性では終わらない、<br>
+        編集という資産価値。
+      </h2>
+
+      <div class="value-grid">
+
+        <div class="value-card fade-up">
+          <span class="value-number">01</span>
+          <h3>24年続く媒体</h3>
+          <p>
+            流行ではなく、積み重ねによって信頼を築いてきた媒体。
+          </p>
+        </div>
+
+        <div class="value-card fade-up">
+          <span class="value-number">02</span>
+          <h3>中長期で残る</h3>
+          <p>
+            ムック本として1年以上書店流通。<br>
+            “掲載した瞬間”で終わらない。
+          </p>
+        </div>
+
+        <div class="value-card fade-up">
+          <span class="value-number">03</span>
+          <h3>知的富裕層へ届く</h3>
+          <p>
+            安さではなく、“価値”で選ぶ読者へ。
+          </p>
+        </div>
+
+        <div class="value-card fade-up">
+          <span class="value-number">04</span>
+          <h3>誌面が権威になる</h3>
+          <p>
+            掲載実績そのものが、店の信用資産になる。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================
+  LAST YEAR
+  ========================================= -->
+  <section class="section lastyear">
+
+    <div class="container">
+
+      <div class="split-grid">
+
+        <div class="split-image fade-up">
+          <img src="images/fv9.webp" alt="">
+        </div>
+
+        <div class="split-content">
+
+          <p class="section-en fade-up">Last Autumn Issue</p>
+
+          <h2 class="section-title fade-up">
+            昨年の企画から、<br>
+            新しい出会いが生まれた。
+          </h2>
+
+          <div class="story-list fade-up">
+
+            <div class="story-item">
+              <h3>読者来店の反響</h3>
+              <p>
+                「誌面を見て来店した」という声を、多くの掲載店様からいただきました。
+              </p>
+            </div>
+
+            <div class="story-item">
+              <h3>メディア波及</h3>
+              <p>
+                掲載後にテレビ・新聞取材へ発展したケースも。
+              </p>
+            </div>
+
+            <div class="story-item">
+              <h3>ブランド価値の可視化</h3>
+              <p>
+                WEBサイトや営業資料に誌面掲載実績を活用する店舗様も増えています。
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================
+  ARCHIVE
+  ========================================= -->
+  <section class="archive-book section">
+
+    <div class="container">
+
+      <p class="section-en fade-up">Archive</p>
+
+      <h2 class="section-title fade-up">
+        実際の誌面を、<br>
+        めくる。
+      </h2>
+
+      <p class="archive-lead fade-up">
+        “広告枠”ではなく、編集としてどう表現されるのか。<br>
+        昨年の実際の誌面をご覧ください。
+      </p>
+
+      <div class="book-wrap fade-up">
+
+        <div class="magazine-viewport">
+
+          <div id="magazine">
+
+            <div class="page dummy"></div>
+
+            <div class="page"><img src="images/archive9.webp" alt=""></div>
+            <div class="page"><img src="images/archive8.webp" alt=""></div>
+            <div class="page"><img src="images/archive7.webp" alt=""></div>
+            <div class="page"><img src="images/archive6.webp" alt=""></div>
+            <div class="page"><img src="images/archive5.webp" alt=""></div>
+            <div class="page"><img src="images/archive4.webp" alt=""></div>
+            <div class="page"><img src="images/archive12.webp" alt=""></div>
+            <div class="page"><img src="images/archive11.webp" alt=""></div>
+            <div class="page"><img src="images/archive3.webp" alt=""></div>
+            <div class="page"><img src="images/archive2.webp" alt=""></div>
+            <div class="page"><img src="images/archive1.webp" alt=""></div>
+            <div class="page"><img src="images/archive10.webp" alt=""></div>
+
+          </div>
+
+        </div>
+
+        <div class="archive-controls">
+
+          <button class="archive-nav next" id="next-btn">
+            <span>←</span>
+          </button>
+
+          <button class="archive-nav prev" id="prev-btn">
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================
+  READER DATA
+  ========================================= -->
+  <section class="section reader-section">
+
+    <div class="container">
+
+      <p class="section-en fade-up">Audience</p>
+
+      <h2 class="section-title fade-up">
+        “誰に届くか”まで、<br>
+        設計された媒体。
+      </h2>
+
+      <div class="reader-grid fade-up">
+
+        <div class="reader-card">
+          <span class="reader-label">精読率</span>
+          <div class="reader-value">
+            <span class="count-up" data-target="77.4">0</span><small>%</small>
+          </div>
+          <p>ほとんど全ページを読むと回答</p>
+        </div>
+
+        <div class="reader-card">
+          <span class="reader-label">平均年齢</span>
+          <div class="reader-value">
+            <span class="count-up" data-target="46.6">0</span><small>歳</small>
+          </div>
+          <p>40〜60代中心のアクティブ層</p>
+        </div>
+
+        <div class="reader-card">
+          <span class="reader-label">年収700万円以上</span>
+          <div class="reader-value">
+            <span class="count-up" data-target="30">0</span><small>%超</small>
+          </div>
+          <p>高感度・高購買層へリーチ</p>
+        </div>
+
+        <div class="reader-card">
+          <span class="reader-label">既婚率</span>
+          <div class="reader-value">
+            <span class="count-up" data-target="73.4">0</span><small>%</small>
+          </div>
+          <p>消費決定権を持つ読者層</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================
+  CREATIVE
+  ========================================= -->
+  <section class="section creative-section">
+
+    <div class="container narrow">
+
+      <p class="section-en fade-up">Creative Direction</p>
+
+      <h2 class="section-title fade-up">
+        店の“空気”まで、<br>
+        編集する。
+      </h2>
+
+      <div class="creative-body fade-up">
+
+        <p>
+          単なる店舗紹介ではなく、<br>
+          空間・思想・接客・時間の流れまで含めて設計。
+        </p>
+
+        <p>
+          ディレクター、フォトグラファー、ライターが共創し、<br>
+          “この店へ行く理由”を誌面として立ち上げます。
+        </p>
+
+      </div>
+
       <div class="process fade-up">
-        <div>Concept</div><div>Direction</div><div>Photography</div><div>Editorial</div><div>Publication</div>
+        <div>Concept</div>
+        <div>Direction</div>
+        <div>Photography</div>
+        <div>Editorial</div>
+        <div>Publication</div>
       </div>
+
     </div>
+
   </section>
 
-  <section class="vision section">
-    <div class="container narrow">
-      <p class="section-en">Vision</p>
-      <h2 class="section-title fade-up">これは、<span class="keep">単なる広告企画ではありません。</span></h2>
-      <div class="vision-text fade-up">
-        <p>店と人が繋がること。ワインを通じて会話が生まれること。東海圏の魅力が、より広く届くこと。</p>
-      </div>
-    </div>
-  </section>
+  <!-- ========================================
+  MEDIA INFO
+  ========================================= -->
+  <section class="section info-section">
 
-  <section class="info section">
     <div class="container">
-      <p class="section-en">Information</p>
-      <h2 class="section-title fade-up">企画概要</h2>
+
+      <p class="section-en fade-up">Media Information</p>
+
+      <h2 class="section-title fade-up">
+        企画概要
+      </h2>
+
       <div class="info-grid fade-up">
-        <div class="info-card"><span>掲載時期</span><p>2026年 秋予定</p></div>
-        <div class="info-card"><span>対象エリア</span><p>東海圏</p></div>
-        <div class="info-card"><span>撮影</span><p>撮影・取材あり</p></div>
-        <div class="info-card"><span>参加形式</span><p>有償参加型企画</p></div>
+
+        <div class="info-card">
+          <span>発行予定</span>
+          <p>2026年9月末</p>
+        </div>
+
+        <div class="info-card">
+          <span>企画内容</span>
+          <p>ワイン特集号</p>
+        </div>
+
+        <div class="info-card">
+          <span>掲載形式</span>
+          <p>有償タイアップ企画</p>
+        </div>
+
+        <div class="info-card">
+          <span>対象</span>
+          <p>飲食店・ワイナリー・輸入業者 他</p>
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
+  <!-- ========================================
+  CTA
+  ========================================= -->
   <section class="cta">
-    <div class="cta-overlay"></div>
+
     <img src="images/fv10.webp" alt="" class="cta-bg">
+
+    <div class="cta-overlay"></div>
+
     <div class="cta-content">
-      <p class="section-en">Autumn Wine Issue 2026</p>
-      <h2>東海のワインシーンを、<span class="keep">共につくる皆さまへ。</span></h2>
-      <a href="#" class="cta-button">企画詳細を受け取る</a>
+
+      <p class="section-en fade-up">
+        Autumn Wine Issue 2026
+      </p>
+
+      <h2 class="fade-up">
+        次は、<br>
+        <span class="keep">貴店の物語を届ける番です。</span>
+      </h2>
+
+      <p class="cta-text fade-up">
+        ご興味をお持ちいただけましたら、<br>
+        本DM・メールへそのままご返信ください。
+      </p>
+
+      <p class="cta-sub fade-up">
+        企画概要・掲載料金・スケジュールをご案内いたします。
+      </p>
+
+      <a href="mailto:example@example.com" class="cta-button fade-up">
+        企画詳細について返信する
+      </a>
+
     </div>
+
   </section>
 
+  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+
   <script src="script.js"></script>
+
 </body>
 </html>
