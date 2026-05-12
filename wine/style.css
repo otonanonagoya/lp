@@ -945,7 +945,10 @@ Mobile
   .editorial-right .editorial-image{
     margin:auto;
   }
-
+  
+ .keep{
+    white-space:normal;
+  }
 }
 
 @media(max-width:520px){
