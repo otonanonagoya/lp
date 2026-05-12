@@ -37,7 +37,7 @@ $(function () {
     slides[current].classList.add('active');
   }
 
-  setInterval(changeSlide, 8000);
+  setInterval(changeSlide, 7000);
 
   /* ========================================
   Count Up
