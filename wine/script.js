@@ -201,8 +201,6 @@ $(function () {
 
   });
 
-});
-
 /* ========================================
 Editorial Reveal
 ======================================== */
@@ -243,9 +241,9 @@ window.addEventListener('scroll', () => {
 
     const offset = scrollY * speed;
 
-    el.style.transform =
-      translateY(${offset}px)
+    el.style.transform = `translateY(${offset}px)`;
 
   });
 
 });
+  });
