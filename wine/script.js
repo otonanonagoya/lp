@@ -202,3 +202,50 @@ $(function () {
   });
 
 });
+
+/* ========================================
+Editorial Reveal
+======================================== */
+
+const editorialObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+},{
+  threshold:0.18
+});
+
+document.querySelectorAll('.editorial-image').forEach(el => {
+  editorialObserver.observe(el);
+});
+
+/* ========================================
+Parallax
+======================================== */
+
+const parallaxItems = document.querySelectorAll('.parallax');
+
+window.addEventListener('scroll', () => {
+
+  const scrollY = window.scrollY;
+
+  parallaxItems.forEach(el => {
+
+    const speed = 0.06;
+
+    const offset = scrollY * speed;
+
+    el.style.transform =
+      `translate3d(0, ${offset}px, 0)`;
+
+  });
+
+});
