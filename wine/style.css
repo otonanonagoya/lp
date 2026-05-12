@@ -50,7 +50,7 @@ a{
 
 .section{
   position:relative;
-  z-index:2;
+  z-index:3;
   padding:clamp(100px,12vh,180px) 0;
   background:#000;
 }
@@ -120,7 +120,7 @@ FV BG
 .fv-bg-fixed{
   position:fixed;
   inset:0;
-  z-index:-2;
+  z-index:0;
   overflow:hidden;
 }
 
@@ -148,7 +148,7 @@ HERO
 
 .hero{
   position:relative;
-  z-index:1;
+  z-index:2;
   min-height:100svh;
   display:flex;
   align-items:center;
@@ -693,7 +693,7 @@ Editorial Inserts
 
 .editorial-insert{
   position:relative;
-  z-index:2;
+  z-index:3;
   padding:120px 0;
   background:#000;
 }
