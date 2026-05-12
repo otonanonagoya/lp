@@ -244,7 +244,7 @@ window.addEventListener('scroll', () => {
     const offset = scrollY * speed;
 
     el.style.transform =
-      `translate3d(0, ${offset}px, 0)`;
+      translateY(${offset}px)
 
   });
 
