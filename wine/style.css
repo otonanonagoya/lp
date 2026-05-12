@@ -139,8 +139,7 @@ FV BG
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(.38);
-  transform:scale(1.03);
+  filter:brightness(.42);
 }
 
 /* ========================================
@@ -704,16 +703,14 @@ Editorial Inserts
   width:min(540px, calc(100% - 40px));
   margin:auto;
   overflow:hidden;
+
   opacity:0;
-  transform:translateY(80px);
   transition:
-    opacity 1.6s var(--easing),
-    transform 1.6s var(--easing);
+    opacity 1.8s ease;
 }
 
 .editorial-image.show{
   opacity:1;
-  transform:none;
 }
 
 .editorial-image::after{
@@ -723,8 +720,8 @@ Editorial Inserts
   background:
     linear-gradient(
       to bottom,
-      rgba(255,255,255,.03),
-      rgba(0,0,0,.22)
+      rgba(255,255,255,.02),
+      rgba(0,0,0,.16)
     );
   pointer-events:none;
 }
@@ -733,19 +730,14 @@ Editorial Inserts
   width:100%;
   aspect-ratio:4/5;
   object-fit:cover;
+
   filter:
-    brightness(.82)
-    contrast(1.08)
-    saturate(.88);
-  transform:scale(1.04);
-  transition:
-    transform 2s ease,
-    filter 1s ease;
+    brightness(.86)
+    contrast(1.03)
+    saturate(.9);
 }
 
-.editorial-image:hover img{
-  transform:scale(1.08);
-}
+/* positioning */
 
 .editorial-right .editorial-image{
   margin-left:auto;
